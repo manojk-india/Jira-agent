@@ -54,13 +54,16 @@ prompt = f"""
 
     Ensure the output is a valid Pandas query.
     Just give the valid python code ..no extra commenst or print statements needed
-    Dont use ''' in output ...your output should be python runnable directly 
-    output should be in format 
+    Encapsulate your output with //code start and //code end
+    output should be in this format 
+    '''
+    //code start
     import pandas as pd
     df = pd.read_csv("new_custom.csv")
 
     // your pandas generated code 
     // code saving it into output.csv
+    '''
 
     """
 
@@ -92,26 +95,38 @@ with open("panda.py", "w") as f:
     f.write(str(result))
     f.write("\n")
 
-def clean_python_script(file_path):
-    with open(file_path, "r", encoding="utf-8") as f:
-        lines = f.readlines()
+def extract_code_section(input_file, output_file):
+    """
+    Extracts the lines between '//code start' and '//code end' from a given Python file.
+    
+    :param input_file: Path to the input Python file.
+    :param output_file: Path to save the extracted code.
+    """
+    inside_code = False
+    extracted_lines = []
 
-    # Find the first import statement
-    start_index = next((i for i, line in enumerate(lines) if line.strip().startswith(("import", "from"))), None)
+    with open(input_file, "r", encoding="utf-8") as file:
+        for line in file:
+            if "//code start" in line:
+                inside_code = True
+                continue  # Skip the marker line
+            elif "//code end" in line:
+                inside_code = False
+                break  # Stop reading after //code end
+            
+            if inside_code:
+                extracted_lines.append(line)
 
-    # If an import statement is found, truncate everything before it
-    if start_index is not None:
-        lines = lines[start_index:]
+    with open(output_file, "w", encoding="utf-8") as file:
+        file.writelines(extracted_lines)
 
-    # Remove the last line if it starts with ''' or """
-    if lines and lines[-1].strip().startswith(("'''", '"""')):
-        lines.pop()
-
-    # Write the cleaned content back to the file
-    with open(file_path, "w", encoding="utf-8") as f:
-        f.writelines(lines)
+    print(f"Extracted code saved to: {output_file}")
+    os.remove(input_file)
+    print(f"Deleted original file: {input_file}")
 
 
-clean_python_script("panda.py")
-# Run Python script
-os.system("python panda.py")
+
+# Example usage:
+extract_code_section("panda.py", "output.py")
+
+os.system("python output.py")
