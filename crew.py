@@ -97,7 +97,8 @@ agent1= Agent(
 # defining task for the agent1
 task1=Task(
     description='''From the user query {dynamic_user} extract 2 things : 1. What data has to be queried(data_to_query)2. Is there anything specific the user is asking for(specific_need)
-    For example if the user query is "Sum of all story points assigned to David" then data_to_query will be "All issues assigned to David" and specific_need will be "sum of all story points of David''',
+    For example if the user query is "Sum of all story points assigned to David" then data_to_query will be "All issues assigned to David" and specific_need will be "sum of all story points of David
+    If there is nothing specific assign variable specific_need as "None" ''',
     agent=agent1,
     output_pydantic=extracted_info,
     expected_output="A response containing ",
@@ -175,48 +176,52 @@ extract_code_section("panda.py", "output1.py")
 os.system("python output1.py")
 
 
-# Now we to address the specific users query so that we have output in the textual format ( easy for leadership )
-# creating a promt template 
-prompt2 = f"""
-    You are given a CSV file with structure {df_structure}
-    Analyze the data and provide a concise pandas code that should run on output.csv file to query the result and also
-    to save it in a output.txt file .
-    
-    User Query: "{user_needs}"
-    
-    output should be in this format 
-    '''
-    //code start
-    import pandas as pd
-    df = pd.read_csv("output.csv")
+if (user_needs=="None"):
+    with open('output.txt', 'w') as f:
+        f.write(f"Nothing to write here as user did not ask anything specific.....\n")
+else:
+    # Now we to address the specific users query so that we have output in the textual format ( easy for leadership )
+    # creating a promt template 
+    prompt2 = f"""
+        You are given a CSV file with structure {df_structure}
+        Analyze the data and provide a concise pandas code that should run on output.csv file to query the result and also
+        to save it in a output.txt file .
+        
+        User Query: "{user_needs}"
+        
+        output should be in this format there should be code start and code end like given below 
+        '''
+        //code start
+        import pandas as pd
+        df = pd.read_csv("output.csv")
 
-    // your pandas generated code 
-    // code for saving it into output.txt with User Query followed by the output
-    //code end 
-    '''
+        // your pandas generated code 
+        // code for saving it into output.txt with User Query followed by the output
+        //code end 
+        '''
 
-    """
-# defining a task for the agent above 
-task3 = Task(
-    description='''Convert the user query User Query given in {prompt2} into a pandas code by understanding the csv file structure
-    to query out specific need of the user and saving it into a text file named output.txt''',
-    agent=agent2,
-    expected_output="A pandas code to query out specific need of the user and saving it into a text file named output.txt",
-)
+        """
+    # defining a task for the agent above 
+    task3 = Task(
+        description='''Convert the user query User Query given in {prompt2} into a pandas code by understanding the csv file structure
+        to query out specific need of the user and saving it into a text file named output.txt''',
+        agent=agent2,
+        expected_output="A pandas code to query out specific need of the user and saving it into a text file named output.txt",
+    )
 
-# initializing the second crew for the agent and task
-crew2 = Crew(agents=[agent2], tasks=[task3])
+    # initializing the second crew for the agent and task
+    crew2 = Crew(agents=[agent2], tasks=[task3])
 
-# Run second agent to analyze `output.csv` and user's query to generate the final output
-result2 = crew2.kickoff(inputs={"prompt2": prompt2})
+    # Run second agent to analyze `output.csv` and user's query to generate the final output
+    result2 = crew2.kickoff(inputs={"prompt2": prompt2})
 
-with open("panda.py", "w") as f:
-    f.write("\n")
-    f.write(str(result2))
-    f.write("\n")
+    with open("panda.py", "w") as f:
+        f.write("\n")
+        f.write(str(result2))
+        f.write("\n")
 
-# Post processing of generated data to extract the useful code
-extract_code_section("panda.py", "output2.py")
+    # Post processing of generated data to extract the useful code
+    extract_code_section("panda.py", "output2.py")
 
-#Running the code using os library manually 
-os.system("python output2.py")
+    #Running the code using os library manually 
+    os.system("python output2.py")
