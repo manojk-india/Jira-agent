@@ -1,0 +1,2 @@
+User Query: Total number of story points assigned to David
+Total Story Points: 69.0

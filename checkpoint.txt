@@ -1,0 +1,5 @@
+Date and Time :2025-03-12 12:41:10.749983
+users original query :Total number of story points assigned to David 
+data to query  :All issues assigned to David
+specific need  :Total number of story points assigned to David
+------------------------------------------------------------------
