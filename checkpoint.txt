@@ -33,3 +33,33 @@ users original query :All the issues assigned to David
 data to query  :All issues assigned to David
 specific need  :None
 ------------------------------------------------------------------
+Date and Time :2025-03-13 18:27:54.757796
+users original query :In total how many stories are assigned to all and how many stories are assigned to David
+data to query  :All issues assigned to any user
+specific need  :count of stories assigned to all and count of stories assigned to David
+------------------------------------------------------------------
+Date and Time :2025-03-13 18:44:05.806881
+users original query :Total number of story issuetype assigned to David 
+data to query  :All issues assigned to David
+specific need  :total number of story issuetype assigned to David
+------------------------------------------------------------------
+Date and Time :2025-03-13 18:55:13.782256
+users original query :How many issues are bugs and whom are it assigned to 
+data to query  :All bug issues
+specific need  :whom the bug issues are assigned to
+------------------------------------------------------------------
+Date and Time :2025-03-13 18:57:39.829953
+users original query :How many issues are bugs and give me the count of bugs assigned to David , Bob , Eve , Charlie and Alice 
+data to query  :All issues that are bugs
+specific need  :count of bugs assigned to David, Bob, Eve, Charlie, and Alice
+------------------------------------------------------------------
+Date and Time :2025-03-13 19:12:58.382243
+users original query :Give me the individual count of  bugs issued to David , Alice , Eve 
+data to query  :All bugs assigned to David, Alice, Eve
+specific need  :count of bugs
+------------------------------------------------------------------
+Date and Time :2025-03-13 19:14:56.077651
+users original query :Give me individual count of bugs issued to David and Alice seperately 
+data to query  :All bugs assigned to David and Alice
+specific need  :count of bugs issued to each individual
+------------------------------------------------------------------

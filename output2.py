@@ -1,13 +1,13 @@
 import pandas as pd
-
-# Read the CSV file
 df = pd.read_csv("output.csv")
 
-# Query the data for issues assigned to David and select storyPoints
-david_story_points = df[df['assignee'] == 'David']['storyPoints']
+# Filter the dataframe to only include bugs
+bugs_df = df[df['issuetype'] == 'Bug']
 
-# Save the result to output.txt with the user query
+# Count the number of bugs issued to each individual
+bug_counts = bugs_df['assignee'].value_counts()
+
+# Save the results to output.txt with the user query
 with open('output.txt', 'w') as f:
-    f.write(f"User Query: story points of all issues assigned to David\n")
-    f.write(f"Result:\n{david_story_points.to_string()}\n")
-
+    f.write("User Query: count of bugs issued to each individual\n")
+    f.write(f"{bug_counts}")

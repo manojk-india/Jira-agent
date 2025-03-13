@@ -1,1 +1,5 @@
-Nothing to write here as user did not ask anything specific.....
+User Query: count of bugs issued to each individual
+assignee
+David    7
+Alice    3
+Name: count, dtype: int64
