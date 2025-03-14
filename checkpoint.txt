@@ -63,3 +63,18 @@ users original query :Give me individual count of bugs issued to David and Alice
 data to query  :All bugs assigned to David and Alice
 specific need  :count of bugs issued to each individual
 ------------------------------------------------------------------
+Date and Time :2025-03-14 06:44:27.894999
+users original query :Give me the individual count of backlogs issued to the sprint1, sprint2, sprint3 , sprint4 seperately 
+data to query  :All issues assigned to sprint1, sprint2, sprint3, sprint4
+specific need  :Count of backlogs in each sprint
+------------------------------------------------------------------
+Date and Time :2025-03-14 06:47:11.873495
+users original query :Give me number of issues assigned to sprint1,sprint2,sprint3 seperaterly 
+data to query  :All issues assigned to sprint1, sprint2, sprint3
+specific need  :number of issues in each sprint
+------------------------------------------------------------------
+Date and Time :2025-03-14 06:49:00.710361
+users original query :Give me individual number of issues assigned to Sprint 1,Sprint 2,Sprint 3
+data to query  :All issues assigned to Sprint 1, Sprint 2, and Sprint 3
+specific need  :the individual number of issues assigned to each sprint
+------------------------------------------------------------------

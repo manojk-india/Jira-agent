@@ -1,13 +1,14 @@
 import pandas as pd
+
+# Read the CSV file
 df = pd.read_csv("output.csv")
 
-# Filter the dataframe to only include bugs
-bugs_df = df[df['issuetype'] == 'Bug']
+# Count the number of issues assigned to each sprint
+sprint_issue_counts = df.groupby('sprint').size()
 
-# Count the number of bugs issued to each individual
-bug_counts = bugs_df['assignee'].value_counts()
+# Prepare the output string
+output = f"User Query: the individual number of issues assigned to each sprint\n{str(sprint_issue_counts)}"
 
-# Save the results to output.txt with the user query
+# Save the output to a text file
 with open('output.txt', 'w') as f:
-    f.write("User Query: count of bugs issued to each individual\n")
-    f.write(f"{bug_counts}")
+    f.write(output)

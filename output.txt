@@ -1,5 +1,6 @@
-User Query: count of bugs issued to each individual
-assignee
-David    7
-Alice    3
-Name: count, dtype: int64
+User Query: the individual number of issues assigned to each sprint
+sprint
+Sprint 1    32
+Sprint 2    33
+Sprint 3    37
+dtype: int64

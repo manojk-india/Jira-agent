@@ -1,8 +1,8 @@
 import pandas as pd
 df = pd.read_csv("new_custom.csv")
 
-# Filter the DataFrame where issuetype is 'Bug' and assignee is either David or Alice
-filtered_df = df[(df['issuetype'] == 'Bug') & (df['assignee'].isin(['David', 'Alice']))]
+# Filter issues assigned to Sprint 1, Sprint 2, and Sprint 3
+df_filtered = df[df['sprint'].isin(['Sprint 1', 'Sprint 2', 'Sprint 3'])]
 
 # Save the filtered DataFrame to output.csv
-filtered_df.to_csv('output.csv', index=False)
+df_filtered.to_csv('output.csv', index=False)
