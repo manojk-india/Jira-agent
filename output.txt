@@ -1,6 +1,2 @@
-User Query: the individual number of issues assigned to each sprint
-sprint
-Sprint 1    32
-Sprint 2    33
-Sprint 3    37
-dtype: int64
+User Query: sum of all story points assigned to David
+Result: 69.0

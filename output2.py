@@ -1,14 +1,10 @@
 import pandas as pd
-
-# Read the CSV file
 df = pd.read_csv("output.csv")
 
-# Count the number of issues assigned to each sprint
-sprint_issue_counts = df.groupby('sprint').size()
+# Filter rows where assignee is David and sum storyPoints
+david_story_points = df[df['assignee'] == 'David']['storyPoints'].sum()
 
-# Prepare the output string
-output = f"User Query: the individual number of issues assigned to each sprint\n{str(sprint_issue_counts)}"
-
-# Save the output to a text file
+# Save result to output.txt
 with open('output.txt', 'w') as f:
-    f.write(output)
+    f.write(f"User Query: sum of all story points assigned to David\n")
+    f.write(f"Result: {david_story_points}")

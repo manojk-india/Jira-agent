@@ -78,3 +78,13 @@ users original query :Give me individual number of issues assigned to Sprint 1,S
 data to query  :All issues assigned to Sprint 1, Sprint 2, and Sprint 3
 specific need  :the individual number of issues assigned to each sprint
 ------------------------------------------------------------------
+Date and Time :2025-03-14 07:25:30.012766
+users original query :Give me count of backlogs present in Sprint 1,Sprint 2,Sprint 3,Sprint 4,Sprint 5,Sprint 6 seperately 
+data to query  :All issues in each sprint
+specific need  :count of backlogs in each sprint
+------------------------------------------------------------------
+Date and Time :2025-03-14 16:29:11.369058
+users original query :striy points assigned to David 
+data to query  :All issues assigned to David
+specific need  :sum of all story points assigned to David
+------------------------------------------------------------------
