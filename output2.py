@@ -1,10 +1,10 @@
-import pandas as pd
-df = pd.read_csv("output.csv")
+import pandas as pd  
+df = pd.read_csv("output.csv")  
 
-# Filter rows where assignee is David and sum storyPoints
-david_story_points = df[df['assignee'] == 'David']['storyPoints'].sum()
+# Filter rows where assignee is David and sum the storyPoints  
+total_points = df[df['assignee'] == 'David']['storyPoints'].sum()  
 
-# Save result to output.txt
-with open('output.txt', 'w') as f:
-    f.write(f"User Query: sum of all story points assigned to David\n")
-    f.write(f"Result: {david_story_points}")
+# Save the result to output.txt with the user query  
+with open('output.txt', 'w') as f:  
+    f.write(f"User Query: sum of all story points of David\n")  
+    f.write(f"Result: {total_points}")  
