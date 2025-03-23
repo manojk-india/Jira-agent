@@ -1,2 +1,2 @@
-User Query: sum of all story points of David
-Result: 69.0
+User Query: sum of all story points assigned to David
+Result: 32.0

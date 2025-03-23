@@ -6,8 +6,9 @@ from datetime import datetime
 import os
 import pandas as pd  # Import pandas for data processing
 import speech_recognition as sr
-import io
-from pydub import AudioSegment
+# import io
+# from pydub import AudioSegment
+
 
 # Load environment variables
 load_dotenv()
@@ -112,7 +113,7 @@ def process_query(user_query, audio_path=None):
     result0 = crew0.kickoff(inputs={"dynamic_user": dynamic_user})
     user_needs = result0["specific_need"]
 
-    with open("checkpoint.txt", "a", encoding="utf-8") as f:
+    with open("generated_files/checkpoint.txt", "a", encoding="utf-8") as f:
         f.write("Date and Time :" + str(datetime.now()) + "\n")
         f.write("users original query :" + dynamic_user + "\n")
         f.write("data to query  :" + result0["data_to_query"] + "\n")
@@ -138,7 +139,7 @@ def process_query(user_query, audio_path=None):
         df = pd.read_csv("new_custom.csv")
 
         // your pandas generated code 
-        // code saving it into output.csv
+        // code saving it into datasets/output.csv
         '''
 
         """
@@ -160,16 +161,16 @@ def process_query(user_query, audio_path=None):
     crew1 = Crew(agents=[agent2], tasks=[task2])
     result1 = crew1.kickoff(inputs={"prompt1": prompt1})
 
-    with open("panda.py", "w") as f:
+    with open("generated_files/panda.py", "w") as f:
         f.write("\n")
         f.write(str(result1))
         f.write("\n")
 
-    extract_code_section("panda.py", "output1.py")
-    os.system("python output1.py")
+    extract_code_section("generated_files/panda.py", "generated_files/output1.py")
+    os.system("python generated_files/output1.py")
 
     if user_needs == "None":
-        with open('output.txt', 'w') as f:
+        with open('generated_files/output.txt', 'w') as f:
             f.write(f"Nothing to write here as user did not ask anything specific.....\n")
         return "Nothing to write here as user did not ask anything specific....."
     else:
@@ -184,10 +185,10 @@ def process_query(user_query, audio_path=None):
             '''
             //code start
             import pandas as pd
-            df = pd.read_csv("output.csv")
+            df = pd.read_csv("generated_files/output.csv")
 
             // your pandas generated code 
-            // code for saving it into output.txt with User Query followed by the output
+            // code for saving it into generated_files/output.txt with User Query followed by the output
             //code end 
             '''
 
@@ -203,26 +204,27 @@ def process_query(user_query, audio_path=None):
         crew2 = Crew(agents=[agent2], tasks=[task3])
         result2 = crew2.kickoff(inputs={"prompt2": prompt2})
 
-        with open("panda.py", "w") as f:
+        with open("generated_files/panda.py", "w") as f:
             f.write("\n")
             f.write(str(result2))
             f.write("\n")
 
-        extract_code_section("panda.py", "output2.py")
-        os.system("python output2.py")
+        extract_code_section("generated_files/panda.py", "generated_files/output2.py")
+        os.system("python generated_files/output2.py")
 
-        with open("output.txt", "r") as f:
+        with open("generated_files/output.txt", "r") as f:
             output_content = f.read()
 
         try:
-            df = pd.read_csv("output.csv")
+            df = pd.read_csv("generated_files/output.csv")
             csv_output = gr.Dataframe(value=df, interactive=False)
-            csv_download = gr.File("output.csv")
+            csv_download = gr.File("generated_files/output.csv")
         except FileNotFoundError:
             csv_output = "output.csv not found."
             csv_download = None
 
         return output_content,csv_output,csv_download
+    
 js = """
 function createGradioAnimation() {
     var container = document.createElement('div');
@@ -300,6 +302,12 @@ button:hover {
     }
 }
 """
+def validate_and_process(text, transcribed):
+    if not text and not transcribed:
+        gr.Warning("⚠️ Please enter either a text query or provide an audio input.⚠️")
+        return None, None, None  # Prevents processing if no input is given
+    return process_query(text, transcribed)  # Call your actual processing function
+
 
 with gr.Blocks(css=css,js=js) as iface:
     gr.Markdown("# JANVI - JIRA AI ASSISTANT")
@@ -321,7 +329,7 @@ with gr.Blocks(css=css,js=js) as iface:
 
     # Linking buttons with functions
     transcribe_btn.click(speech_to_text, inputs=audio_input, outputs=transcribed_text)
-    process_btn.click(process_query, inputs=transcribed_text, outputs=[output_text, output_df, output_file])
+    process_btn.click(validate_and_process, inputs=[text_input,transcribed_text], outputs=[output_text, output_df, output_file])
 
 if __name__ == "__main__":
     iface.launch()
