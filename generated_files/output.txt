@@ -1,2 +1,2 @@
-User Query: sum of all story points of David
-Total Story Points: 32.0
+User Query: sum of all story points of Sanjay
+Result: 0

@@ -84,11 +84,12 @@ class extracted_info(BaseModel):
     data_to_query: str
     specific_need: str
 
-def process_query(user_query, audio_path=None):
-    if audio_path:  # If audio is provided, convert to text
-        dynamic_user = speech_to_text(audio_path)
-    else:
+def process_query(user_query, audio_text=None):
+    # checking the condition for which one has been provided
+    if user_query:  # If audio is provided, convert to text
         dynamic_user = user_query
+    else:
+        dynamic_user = audio_text
 
 
     # Agent 1: Query info extraction
@@ -136,10 +137,10 @@ def process_query(user_query, audio_path=None):
         '''
         //code start
         import pandas as pd
-        df = pd.read_csv("new_custom.csv")
+        df = pd.read_csv("generated_files/new_custom.csv")
 
         // your pandas generated code 
-        // code saving it into datasets/output.csv
+        // code saving it into generated_files/output.csv
         '''
 
         """
@@ -316,10 +317,10 @@ with gr.Blocks(css=css,js=js) as iface:
     with gr.Row():
         text_input = gr.Textbox(lines=2, placeholder="Enter your query here...", label="Query Input")
         audio_input = gr.Audio(type="filepath", label="Speak your query")
-
-    transcribe_btn = gr.Button("Transcribe Audio")
     
     transcribed_text = gr.Textbox(lines=2, label="Transcribed Text (Edit if needed)")
+
+    audio_input.change(speech_to_text, inputs=audio_input, outputs=transcribed_text)
     
     process_btn = gr.Button("Submit Query")
 
@@ -327,8 +328,6 @@ with gr.Blocks(css=css,js=js) as iface:
     output_df = gr.Dataframe(label="Formatted output.csv")
     output_file = gr.File(label="Download output.csv")
 
-    # Linking buttons with functions
-    transcribe_btn.click(speech_to_text, inputs=audio_input, outputs=transcribed_text)
     process_btn.click(validate_and_process, inputs=[text_input,transcribed_text], outputs=[output_text, output_df, output_file])
 
 if __name__ == "__main__":

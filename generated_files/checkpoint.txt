@@ -263,3 +263,18 @@ users original query :Total number of story points assigned to David
 data to query  :All issues assigned to David
 specific need  :sum of all story points of David
 ------------------------------------------------------------------
+Date and Time :2025-03-24 18:38:19.123884
+users original query :total number of story points assigned to David
+data to query  :All issues assigned to David
+specific need  :sum of all story points assigned to David
+------------------------------------------------------------------
+Date and Time :2025-03-24 18:38:47.173453
+users original query :total number of story points assigned to Sanjay
+data to query  :All issues assigned to Sanjay
+specific need  :sum of all story points of Sanjay
+------------------------------------------------------------------
+Date and Time :2025-03-24 18:43:34.832256
+users original query :total number of story points assigned to Sanjay
+data to query  :All issues assigned to Sanjay
+specific need  :sum of all story points of Sanjay
+------------------------------------------------------------------
