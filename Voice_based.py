@@ -269,7 +269,10 @@ css = """
 .gradio-container {
     background: linear-gradient(135deg, #e3f2fd, #bbdefb);
     font-family: 'Roboto', sans-serif;
-    padding: 30px;
+    width: 100vw;
+    max-width: 100%;
+    min-height: 100vh;
+    padding: 40px;
     border-radius: 15px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
     max-width: 900px;
@@ -303,6 +306,7 @@ button:hover {
     }
 }
 """
+
 def validate_and_process(text, transcribed):
     if not text and not transcribed:
         gr.Warning("⚠️ Please enter either a text query or provide an audio input.⚠️")
