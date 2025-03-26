@@ -6,8 +6,6 @@ from datetime import datetime
 import os
 import pandas as pd  # Import pandas for data processing
 import speech_recognition as sr
-# import io
-# from pydub import AudioSegment
 
 
 # Load environment variables
@@ -16,7 +14,8 @@ load_dotenv()
 # Initialize LLM model
 llm = LLM(
     model="sambanova/DeepSeek-R1-Distill-Llama-70B",
-    temperature=0.7
+    temperature=0.7,
+    max_tokens=1000000000
 )
 
 def speech_to_text(audio_path):
@@ -55,29 +54,28 @@ def extract_code_section(input_file, output_file):
 # DataFrame structure
 df_structure = """
 The dataset has the following columns:
-- "id": unique identifier
 - "key": issue key
-- "project": project name
-- "summary": summary of project
-- "description": description of task
-- "status": ["Backlog", "To Do", "In Progress", "Review", "Done"]
+- "board": board id to which the issue has been assigned to
+- "summary": summary of issues
+- "description": description of issue
+- "status": ["To Do", "In Progress", "Done"]
 - "assignee": assigned person's name
 - "reporter": reporter's name
+- "acceptance_criteria": acceptance criteria
 - "priority": ["High", "Medium", "Low", "Critical"]
-- "issuetype": ["Story", "Bug", "Task", "Epic"]
-- "created": date of creation (YYYY-MM-DD)
-- "updated": last update date (YYYY-MM-DD)
-- "resolution": ["Fixed", "Won't Fix", "Duplicate", None]
-- "labels": labels (list)
-- "components": components involved
+- "issue_type": ["Story", "Bug", "Task","Defect"]
+- "created": date of creation for the issue (YYYY-MM-DD)
+- "closed": closed date (MM-DD-YYYY) , None if issue is not closed
+- "labels": List of label names
+- "components": List of component names
 - "sprint": sprint name
-- "sprintId": sprint ID
-- "sprintState": ["To Do", "In Progress", "Review", "Done"]
-- "sprintStartDate": sprint start date (YYYY-MM-DD)
-- "sprintEndDate": sprint end date (YYYY-MM-DD)
-- "storyPoints": story points (numeric)
-- "epicLink": linked epic
-- "rank": rank
+- "sprint_state": ["Completed", "Active", "Future"]
+- "sprint_start_date": sprint start date (MM-DD-YYYY)
+- "sprint_end_date": sprint end date (MM-DD-YYYY)
+- "story_points": story points (numeric)
+- "epic_id": epic id 
+- "requested_by": RTB or CTB
+- "employee_type": employee type of assignee ( FTE or FTC )
 """
 
 class extracted_info(BaseModel):
@@ -134,6 +132,8 @@ def process_query(user_query, audio_text=None):
         Just give the valid python code ..no extra commenst or print statements needed
         Encapsulate your output with //code start and //code end
         output should be in this format 
+        Just giving you a context ..if user asks for backlog it means that sprintState should be Future for that issues no other column
+        is required to find whether a issue is backlog or not
         '''
         //code start
         import pandas as pd
@@ -183,6 +183,13 @@ def process_query(user_query, audio_text=None):
             User Query: "{user_needs}"
 
             output should be in this format there should be code start and code end like given below 
+            If they ask you to count anything then dont try to filter the dataframe . use df functions 
+            df = pd.read_csv("generated_files/output.csv") always use this 
+            eg num_rows = len(df)
+            eg column_sum = df["your_column_name"].sum() 
+            if user is asking for individual or seperate result then calculate seperately 
+            eg:rtb_count = (df["requested_by"] == "RTB").sum()
+               tb_count = (df["requested_by"] == "CTB").sum()
             '''
             //code start
             import pandas as pd
@@ -192,7 +199,6 @@ def process_query(user_query, audio_text=None):
             // code for saving it into generated_files/output.txt with User Query followed by the output
             //code end 
             '''
-
             """
 
         task3 = Task(
@@ -216,6 +222,7 @@ def process_query(user_query, audio_text=None):
         with open("generated_files/output.txt", "r") as f:
             output_content = f.read()
 
+        # Getting the content to display in frontend 
         try:
             df = pd.read_csv("generated_files/output.csv")
             csv_output = gr.Dataframe(value=df, interactive=False)
@@ -226,69 +233,331 @@ def process_query(user_query, audio_text=None):
 
         return output_content,csv_output,csv_download
     
-js = """
-function createGradioAnimation() {
-    var container = document.createElement('div');
-    container.id = 'gradio-animation';
-    container.style.fontSize = '2em';
-    container.style.fontWeight = 'bold';
-    container.style.textAlign = 'center';
-    container.style.marginBottom = '20px';
 
-    var text = 'JANVI IS HERE!';
-    var gradioContainer = document.querySelector('.gradio-container');
-    gradioContainer.insertBefore(container, gradioContainer.firstChild);
 
-    function animateText() {
-        container.innerHTML = ''; // Clear previous animation
-        for (var i = 0; i < text.length; i++) {
-            (function(i) {
-                setTimeout(function() {
-                    var letter = document.createElement('span');
-                    letter.style.opacity = '0';
-                    letter.style.transition = 'opacity 0.5s';
-                    letter.innerText = text[i];
-                    container.appendChild(letter);
-
-                    setTimeout(function() {
-                        letter.style.opacity = '1';
-                    }, 50);
-                }, i * 250);
-            })(i);
+# Frontend part starts ............
+js="""
+function createPremiumIntroAnimation() {
+    // Create animation container
+    const animationContainer = document.createElement('div');
+    animationContainer.id = 'janvi-premium-intro';
+    animationContainer.style.cssText = `
+        position: relative;
+        width: 100%;
+        height: 120px;
+        margin: 2rem 0;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    `;
+    
+    // Create text element
+    const textElement = document.createElement('div');
+    textElement.style.cssText = `
+        font-size: 3.5rem;
+        font-weight: 900;
+        background: linear-gradient(135deg, #0052cc, #36b37e, #ff5630);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        position: relative;
+        text-align: center;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        opacity: 0;
+        transform: translateY(30px);
+        filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.2));
+    `;
+    textElement.innerText = 'JANVI AI ASSISTANT';
+    
+    // Create particle container
+    const particleContainer = document.createElement('div');
+    particleContainer.style.cssText = `
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: -1;
+    `;
+    
+    // Create decorative elements
+    const leftOrnament = document.createElement('div');
+    const rightOrnament = document.createElement('div');
+    [leftOrnament, rightOrnament].forEach((el, i) => {
+        el.style.cssText = `
+            position: absolute;
+            top: 50%;
+            ${i === 0 ? 'left' : 'right'}: 10%;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(${i === 0 ? 'to right' : 'to left'}, #0052cc, #36b37e);
+            transform: translateY(-50%) scaleX(0);
+            transform-origin: ${i === 0 ? 'left' : 'right'};
+            border-radius: 2px;
+            opacity: 0;
+        `;
+    });
+    
+    // Assemble the components
+    animationContainer.appendChild(textElement);
+    animationContainer.appendChild(particleContainer);
+    animationContainer.appendChild(leftOrnament);
+    animationContainer.appendChild(rightOrnament);
+    
+    // Insert into DOM
+    const gradioContainer = document.querySelector('.gradio-container');
+    gradioContainer.insertBefore(animationContainer, gradioContainer.firstChild);
+    
+    // Animation timeline
+    const tl = {
+        duration: 2000,
+        start: Date.now(),
+        animate: function() {
+            const elapsed = Date.now() - this.start;
+            const progress = Math.min(elapsed / this.duration, 1);
+            
+            // Text animation
+            textElement.style.opacity = progress;
+            textElement.style.transform = `translateY(${30 * (1 - progress)}px)`;
+            
+            // Ornament animation
+            if (progress > 0.3) {
+                const ornamentProgress = (progress - 0.3) / 0.7;
+                leftOrnament.style.opacity = ornamentProgress;
+                rightOrnament.style.opacity = ornamentProgress;
+                leftOrnament.style.transform = `translateY(-50%) scaleX(${ornamentProgress})`;
+                rightOrnament.style.transform = `translateY(-50%) scaleX(${ornamentProgress})`;
+            }
+            
+            // Continue animation until complete
+            if (progress < 1) {
+                requestAnimationFrame(() => this.animate());
+            } else {
+                this.createParticles(particleContainer);
+            }
+        },
+        createParticles: function(container) {
+            // Create 30 particles
+            for (let i = 0; i < 30; i++) {
+                setTimeout(() => {
+                    const particle = document.createElement('div');
+                    const size = Math.random() * 8 + 4;
+                    const color = `hsl(${Math.random() * 60 + 180}, 80%, 60%)`;
+                    
+                    particle.style.cssText = `
+                        position: absolute;
+                        width: ${size}px;
+                        height: ${size}px;
+                        background: ${color};
+                        border-radius: 50%;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        opacity: 0;
+                        filter: blur(${size/3}px);
+                    `;
+                    
+                    container.appendChild(particle);
+                    
+                    // Animate particle
+                    const angle = Math.random() * Math.PI * 2;
+                    const distance = Math.random() * 100 + 50;
+                    const duration = Math.random() * 2000 + 1000;
+                    
+                    particle.animate([
+                        { 
+                            opacity: 1,
+                            transform: `translate(-50%, -50%) scale(1)`
+                        },
+                        {
+                            opacity: 0,
+                            transform: `translate(
+                                ${-50 + Math.cos(angle) * distance}%, 
+                                ${-50 + Math.sin(angle) * distance}%
+                            ) scale(0)`
+                        }
+                    ], {
+                        duration: duration,
+                        easing: 'cubic-bezier(0.4, 0, 0.2, 1)'
+                    });
+                    
+                    // Remove particle after animation
+                    setTimeout(() => {
+                        particle.remove();
+                    }, duration);
+                }, i * 100);
+            }
+            
+            // Repeat particle effect every 3 seconds
+            setTimeout(() => this.createParticles(container), 3000);
         }
-    }
-
-    animateText();
-    setInterval(animateText, text.length * 250 + 1000); // Repeat animation
-    return 'Animation created';
+    };
+    
+    // Start animation
+    setTimeout(() => tl.animate(), 500);
+    
+    return 'Premium animation initialized';
 }
 """
 
-css = """
-/* General container styling */
+css="""
+/* === Full-Page Premium Gradient Theme === */
 .gradio-container {
-    background: linear-gradient(135deg, #e3f2fd, #bbdefb);
-    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 50%, #82b1ff 100%);
+    font-family: 'Poppins', 'Roboto', sans-serif;
     width: 100vw;
-    max-width: 100%;
     min-height: 100vh;
-    padding: 40px;
-    border-radius: 15px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-    max-width: 900px;
-    margin: 50px auto;
-    animation: fadeIn 1s ease-in-out;
+    padding: 0;
+    margin: 0;
+    animation: gradientFlow 15s ease infinite;
+    background-size: 200% 200%;
+    position: relative;
+    overflow-x: hidden;
 }
-button:hover {
-    background: linear-gradient(135deg, #1e88e5, #1565c0);
+
+@keyframes gradientFlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* === Main Content Card === */
+.gradio-container > .container {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 20px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+    padding: 3rem;
+    max-width: 1000px;
+    margin: 3rem auto;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    animation: fadeInUp 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    transform-origin: top center;
+}
+
+/* === Header Styling === */
+h1 {
+    text-align: center;
+    font-weight: 800;
+    font-size: 3rem;
+    margin: 0 0 1.5rem 0;
+    background: linear-gradient(135deg, #1e88e5 0%, #0d47a1 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: relative;
+    padding-bottom: 1.5rem;
+}
+
+h1::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150px;
+    height: 4px;
+    background: linear-gradient(90deg, #1e88e5, #0d47a1);
+    border-radius: 2px;
+    box-shadow: 0 2px 8px rgba(30, 136, 229, 0.3);
+}
+
+/* === Input Fields === */
+.gr-textbox, .gr-input {
+    border-radius: 14px !important;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+    padding: 1.25rem !important;
+    transition: all 0.3s ease !important;
+    background: rgba(255, 255, 255, 0.8) !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05) !important;
+}
+
+.gr-textbox:focus, .gr-input:focus {
+    border-color: #1e88e5 !important;
+    box-shadow: 0 0 0 3px rgba(30, 136, 229, 0.2) !important;
     transform: translateY(-2px);
 }
 
-/* Fade-in animation */
-@keyframes fadeIn {
+/* === Enhanced Buttons === */
+.gr-button {
+    background: linear-gradient(135deg, #1e88e5 0%, #1565c0 100%) !important;
+    color: white !important;
+    border: none !important;
+    padding: 1.25rem 2.5rem !important;
+    border-radius: 14px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 4px 15px rgba(30, 136, 229, 0.4) !important;
+    position: relative;
+    overflow: hidden;
+    margin: 2rem auto !important;
+    display: block;
+    width: fit-content;
+    min-width: 220px;
+}
+
+.gr-button:hover {
+    transform: translateY(-3px) !important;
+    box-shadow: 0 6px 20px rgba(30, 136, 229, 0.6) !important;
+    background: linear-gradient(135deg, #2196f3 0%, #1e88e5 100%) !important;
+}
+
+.gr-button::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -60%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.3) 50%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    transform: rotate(30deg);
+    transition: all 0.6s ease;
+}
+
+.gr-button:hover::after {
+    left: 100%;
+}
+
+/* === Audio Input Styling === */
+.gr-audio {
+    border-radius: 16px !important;
+    overflow: hidden !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;
+    transition: all 0.3s ease !important;
+}
+
+.gr-audio:hover {
+    transform: translateY(-3px) !important;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* === Output Sections === */
+.gr-dataframe, .gr-file {
+    border-radius: 16px !important;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05) !important;
+    transition: all 0.3s ease !important;
+}
+
+.gr-dataframe:hover, .gr-file:hover {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1) !important;
+    transform: translateY(-2px);
+}
+
+/* === Animations === */
+@keyframes fadeInUp {
     from {
         opacity: 0;
-        transform: translateY(-20px);
+        transform: translateY(20px);
     }
     to {
         opacity: 1;
@@ -296,16 +565,58 @@ button:hover {
     }
 }
 
-/* Fade-in-out animation for the welcome text */
-@keyframes fadeInOut {
-    0%, 100% {
-        opacity: 0;
+/* === Floating Particles === */
+.gradio-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.15) 0%, transparent 2%),
+        radial-gradient(circle at 80% 70%, rgba(30, 136, 229, 0.1) 0%, transparent 2%);
+    background-size: 300px 300px;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* === Responsive Design === */
+@media (max-width: 768px) {
+    .gradio-container > .container {
+        padding: 2rem;
+        margin: 2rem 1rem;
+        border-radius: 16px;
     }
-    50% {
-        opacity: 1;
+    
+    h1 {
+        font-size: 2.25rem;
+    }
+    
+    .gr-button {
+        padding: 1rem 2rem !important;
+        min-width: 180px;
     }
 }
-"""
+
+/* === Custom Scrollbar === */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(#1e88e5, #1565c0);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(#2196f3, #1e88e5);
+}"""
 
 def validate_and_process(text, transcribed):
     if not text and not transcribed:
@@ -314,8 +625,8 @@ def validate_and_process(text, transcribed):
     return process_query(text, transcribed)  # Call your actual processing function
 
 
-with gr.Blocks(css=css,js=js) as iface:
-    gr.Markdown("# JANVI - JIRA AI ASSISTANT")
+with gr.Blocks(js=js,css=css) as iface:
+    #gr.Markdown("# JANVI - JIRA AI ASSISTANT")
     gr.Markdown("Enter your query using text or voice. You can edit transcribed text before submission.")
 
     with gr.Row():
@@ -336,3 +647,111 @@ with gr.Blocks(css=css,js=js) as iface:
 
 if __name__ == "__main__":
     iface.launch()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# css = """
+# /* General container styling */
+# .gradio-container {
+#     background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+#     font-family: 'Roboto', sans-serif;
+#     width: 100vw;
+#     max-width: 100%;
+#     min-height: 100vh;
+#     padding: 40px;
+#     border-radius: 15px;
+#     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+#     max-width: 900px;
+#     margin: 50px auto;
+#     animation: fadeIn 1s ease-in-out;
+# }
+# button:hover {
+#     background: linear-gradient(135deg, #1e88e5, #1565c0);
+#     transform: translateY(-2px);
+# }
+
+# /* Fade-in animation */
+# @keyframes fadeIn {
+#     from {
+#         opacity: 0;
+#         transform: translateY(-20px);
+#     }
+#     to {
+#         opacity: 1;
+#         transform: translateY(0);
+#     }
+# }
+
+# /* Fade-in-out animation for the welcome text */
+# @keyframes fadeInOut {
+#     0%, 100% {
+#         opacity: 0;
+#     }
+#     50% {
+#         opacity: 1;
+#     }
+# }
+# """
+
+   
+# js = """
+# function createGradioAnimation() {
+#     var container = document.createElement('div');
+#     container.id = 'gradio-animation';
+#     container.style.fontSize = '2em';
+#     container.style.fontWeight = 'bold';
+#     container.style.textAlign = 'center';
+#     container.style.marginBottom = '20px';
+
+#     var text = 'JANVI IS HERE!';
+#     var gradioContainer = document.querySelector('.gradio-container');
+#     gradioContainer.insertBefore(container, gradioContainer.firstChild);
+
+#     function animateText() {
+#         container.innerHTML = ''; // Clear previous animation
+#         for (var i = 0; i < text.length; i++) {
+#             (function(i) {
+#                 setTimeout(function() {
+#                     var letter = document.createElement('span');
+#                     letter.style.opacity = '0';
+#                     letter.style.transition = 'opacity 0.5s';
+#                     letter.innerText = text[i];
+#                     container.appendChild(letter);
+
+#                     setTimeout(function() {
+#                         letter.style.opacity = '1';
+#                     }, 50);
+#                 }, i * 250);
+#             })(i);
+#         }
+#     }
+
+#     animateText();
+#     setInterval(animateText, text.length * 250 + 1000); // Repeat animation
+#     return 'Animation created';
+# }
+# """

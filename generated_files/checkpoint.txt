@@ -1,280 +1,70 @@
-Date and Time :2025-03-12 12:41:10.749983
-users original query :Total number of story points assigned to David 
-data to query  :All issues assigned to David
-specific need  :Total number of story points assigned to David
+Date and Time :2025-03-27 00:00:56.018969
+users original query :what are the total number of backlogs assigned to Sprint 8
+data to query  :All backlogs assigned to Sprint 8
+specific need  :total number of backlogs in Sprint 8
 ------------------------------------------------------------------
-Date and Time :2025-03-12 13:14:58.872243
-users original query :what are the issues assigned to David
-data to query  :All issues assigned to David
-specific need  :Retrieve all issues assigned to David
+Date and Time :2025-03-27 00:10:55.673557
+users original query :what are the total number of backlogs assigned to Sprint 8
+data to query  :All issues assigned to Sprint 8
+specific need  :total number of backlogs
 ------------------------------------------------------------------
-Date and Time :2025-03-12 13:45:47.963796
-users original query :List All issues assigned to David 
-data to query  :All issues assigned to David
-specific need  :None
+Date and Time :2025-03-27 00:14:06.130059
+users original query :total number backlogs assigned to Sprint 8
+data to query  :All issues assigned to Sprint 8
+specific need  :Count of all backlogs assigned to Sprint 8
 ------------------------------------------------------------------
-Date and Time :2025-03-12 13:46:49.991794
-users original query :Total story points assigned to David 
-data to query  :All issues assigned to David
-specific need  :sum of all story points of David
+Date and Time :2025-03-27 00:18:36.211101
+users original query :total number backlogs assigned to Sprint 8
+data to query  :All issues assigned to Sprint 8
+specific need  :count of all backlog issues assigned to Sprint 8
 ------------------------------------------------------------------
-Date and Time :2025-03-12 13:50:14.610099
-users original query :All the story points assigned to David 
-data to query  :All issues assigned to David
-specific need  :all the story points assigned to David
+Date and Time :2025-03-27 00:20:48.108539
+users original query :total number backlogs assigned to Sprint 8
+data to query  :All issues assigned to Sprint 8
+specific need  :total number of backlogs assigned to Sprint 8
 ------------------------------------------------------------------
-Date and Time :2025-03-12 16:02:09.409876
-users original query :All the story points assighed to David 
-data to query  :All issues assigned to David
-specific need  :story points of all issues assigned to David
+Date and Time :2025-03-27 00:22:06.178844
+users original query :Give me RTB , CTB issue counts of Sprint 8
+data to query  :All issues in Sprint 8
+specific need  :issue counts of RTB and CTB
 ------------------------------------------------------------------
-Date and Time :2025-03-12 16:06:43.701551
-users original query :All the issues assigned to David
-data to query  :All issues assigned to David
-specific need  :None
+Date and Time :2025-03-27 00:23:25.740416
+users original query :Give me RTB , CTB issue counts of Sprint 8 seperately. Like i need counts of RTB seperately and CTB seperately 
+data to query  :All issues in Sprint 8
+specific need  :counts of RTB and CTB issues
 ------------------------------------------------------------------
-Date and Time :2025-03-13 18:27:54.757796
-users original query :In total how many stories are assigned to all and how many stories are assigned to David
-data to query  :All issues assigned to any user
-specific need  :count of stories assigned to all and count of stories assigned to David
+Date and Time :2025-03-27 00:25:15.608161
+users original query :Count of RTB , CTB issues in Sprint 8 individually 
+data to query  :All RTB and CTB issues in Sprint 8
+specific need  :Count of RTB and CTB issues individually
 ------------------------------------------------------------------
-Date and Time :2025-03-13 18:44:05.806881
-users original query :Total number of story issuetype assigned to David 
-data to query  :All issues assigned to David
-specific need  :total number of story issuetype assigned to David
+Date and Time :2025-03-27 00:31:52.805105
+users original query :Count of RTB , CTB issues in Sprint 8 individually 
+data to query  :All issues in Sprint 8 with status RTB or CTB
+specific need  :count of RTB and CTB issues in Sprint 8 individually
 ------------------------------------------------------------------
-Date and Time :2025-03-13 18:55:13.782256
-users original query :How many issues are bugs and whom are it assigned to 
-data to query  :All bug issues
-specific need  :whom the bug issues are assigned to
+Date and Time :2025-03-27 00:34:19.858695
+users original query :Count of RTB , CTB issues in Sprint 8 individually 
+data to query  :All issues in Sprint 8
+specific need  :count of RTB and CTB issues in Sprint 8
 ------------------------------------------------------------------
-Date and Time :2025-03-13 18:57:39.829953
-users original query :How many issues are bugs and give me the count of bugs assigned to David , Bob , Eve , Charlie and Alice 
-data to query  :All issues that are bugs
-specific need  :count of bugs assigned to David, Bob, Eve, Charlie, and Alice
+Date and Time :2025-03-27 00:37:18.336100
+users original query :Count of FTE / FTC utilization in board CDF
+data to query  :FTE and FTC utilization data in board CDF extract
+specific need  :count of FTE and FTC utilization
 ------------------------------------------------------------------
-Date and Time :2025-03-13 19:12:58.382243
-users original query :Give me the individual count of  bugs issued to David , Alice , Eve 
-data to query  :All bugs assigned to David, Alice, Eve
-specific need  :count of bugs
+Date and Time :2025-03-27 00:43:40.825502
+users original query :Give me RTB , CTB issue counts of Sprint 8
+data to query  :All issues related to RTB and CTB in Sprint 8
+specific need  :Count of RTB and CTB issues
 ------------------------------------------------------------------
-Date and Time :2025-03-13 19:14:56.077651
-users original query :Give me individual count of bugs issued to David and Alice seperately 
-data to query  :All bugs assigned to David and Alice
-specific need  :count of bugs issued to each individual
+Date and Time :2025-03-27 00:44:28.575636
+users original query :Give me RTB , CTB story points of Sprint 8 seperately 
+data to query  :All issues in Sprint 8 with status RTB and CTB
+specific need  :sum of story points for RTB and CTB issues in Sprint 8
 ------------------------------------------------------------------
-Date and Time :2025-03-14 06:44:27.894999
-users original query :Give me the individual count of backlogs issued to the sprint1, sprint2, sprint3 , sprint4 seperately 
-data to query  :All issues assigned to sprint1, sprint2, sprint3, sprint4
-specific need  :Count of backlogs in each sprint
-------------------------------------------------------------------
-Date and Time :2025-03-14 06:47:11.873495
-users original query :Give me number of issues assigned to sprint1,sprint2,sprint3 seperaterly 
-data to query  :All issues assigned to sprint1, sprint2, sprint3
-specific need  :number of issues in each sprint
-------------------------------------------------------------------
-Date and Time :2025-03-14 06:49:00.710361
-users original query :Give me individual number of issues assigned to Sprint 1,Sprint 2,Sprint 3
-data to query  :All issues assigned to Sprint 1, Sprint 2, and Sprint 3
-specific need  :the individual number of issues assigned to each sprint
-------------------------------------------------------------------
-Date and Time :2025-03-14 07:25:30.012766
-users original query :Give me count of backlogs present in Sprint 1,Sprint 2,Sprint 3,Sprint 4,Sprint 5,Sprint 6 seperately 
-data to query  :All issues in each sprint
-specific need  :count of backlogs in each sprint
-------------------------------------------------------------------
-Date and Time :2025-03-14 16:29:11.369058
-users original query :striy points assigned to David 
-data to query  :All issues assigned to David
-specific need  :sum of all story points assigned to David
-------------------------------------------------------------------
-Date and Time :2025-03-21 22:50:24.865846
-users original query :How many issues are assigned to david
-
-data to query  :All issues assigned to David
-specific need  :None
-------------------------------------------------------------------
-Date and Time :2025-03-21 22:50:56.809387
-users original query :Total number of story points assigned to David 
-
-data to query  :All issues assigned to David
-specific need  :sum of all story points of David
-------------------------------------------------------------------
-Date and Time :2025-03-21 22:59:22.864426
-users original query :Total number of story points assigned to David 
-
-data to query  :All issues assigned to David
-specific need  :sum of all story points of David
-------------------------------------------------------------------
-Date and Time :2025-03-21 23:05:07.232602
-users original query :Number of story poinst assigned to David
-
-data to query  :All issues assigned to David
-specific need  :sum of all story points of David
-------------------------------------------------------------------
-Date and Time :2025-03-21 23:05:46.450592
-users original query :Total number of story points assigned to David 
-
-data to query  :All issues assigned to David
-specific need  :sum of all story points of David
-------------------------------------------------------------------
-Date and Time :2025-03-21 23:09:29.894265
-users original query :Total number of story points assigned to David 
-data to query  :All issues assigned to David
-specific need  :sum of all story points of David
-------------------------------------------------------------------
-Date and Time :2025-03-21 23:13:18.572027
-users original query :Total number of story points assigned to David 
-data to query  :All issues assigned to David
-specific need  :sum of all story points of David
-------------------------------------------------------------------
-Date and Time :2025-03-21 23:19:28.604402
-users original query :Total number of story points assigned to David 
-data to query  :All issues assigned to David
-specific need  :sum of all story points of David
-------------------------------------------------------------------
-Date and Time :2025-03-21 23:48:45.062194
-users original query :Total number of story points assigned to David
-data to query  :All issues assigned to David
-specific need  :sum of all story points of David
-------------------------------------------------------------------
-Date and Time :2025-03-21 23:55:35.775955
-users original query :Total number of story points assigned to David
-data to query  :All issues assigned to David
-specific need  :sum of all story points of David
-------------------------------------------------------------------
-Date and Time :2025-03-22 17:16:27.488629
-users original query :How many issues are assigned to Charlie 
-data to query  :All issues assigned to Charlie
-specific need  :count of issues assigned to Charlie
-------------------------------------------------------------------
-Date and Time :2025-03-22 17:20:16.361148
-users original query :Charlie ke paas kitne issues hain
-data to query  :All issues assigned to Charlie
-specific need  :number of issues assigned to Charlie
-------------------------------------------------------------------
-Date and Time :2025-03-22 17:22:18.533175
-users original query :Charli ke paas kitne issues hain
-data to query  :All issues assigned to Charli
-specific need  :count of issues assigned to Charli
-------------------------------------------------------------------
-Date and Time :2025-03-22 20:16:47.975560
-users original query :David ku evolo story points assign pannirukanga 
-data to query  :All issues assigned to David
-specific need  :sum of all story points of David
-------------------------------------------------------------------
-Date and Time :2025-03-22 20:51:41.017221
-users original query :number of Doraemon
-data to query  :Number of Doraemon
-specific need  :None
-------------------------------------------------------------------
-Date and Time :2025-03-22 20:58:03.834847
-users original query :total number of Unicorn assigned to David
-data to query  :All issues assigned to David
-specific need  :total number of Unicorn assigned to David
-------------------------------------------------------------------
-Date and Time :2025-03-22 21:01:59.195326
-users original query :total number of 40 points assigned to David
-data to query  :All issues assigned to David
-specific need  :None
-------------------------------------------------------------------
-Date and Time :2025-03-22 21:09:44.709454
-users original query :total number of story points assigned to David
-data to query  :All issues assigned to David
-specific need  :sum of all story points of David
-------------------------------------------------------------------
-Date and Time :2025-03-22 21:45:46.479576
-users original query :total number of story points assign to David
-data to query  :All issues assigned to David
-specific need  :sum of all story points assigned to David
-------------------------------------------------------------------
-Date and Time :2025-03-22 21:47:33.695863
-users original query :total number of story points assigned to David
-data to query  :All issues assigned to David
-specific need  :sum of all story points of David
-------------------------------------------------------------------
-Date and Time :2025-03-23 12:35:15.440698
-users original query :total number of story points assigned to david
-data to query  :All issues assigned to David
-specific need  :sum of all story points of David
-------------------------------------------------------------------
-Date and Time :2025-03-23 12:38:21.175480
-users original query :
-data to query  :all issues assigned to David
-specific need  :sum of all story points of David
-------------------------------------------------------------------
-Date and Time :2025-03-23 12:38:54.938538
-users original query :
-data to query  :All issues assigned to David
-specific need  :sum of all story points of David
-------------------------------------------------------------------
-Date and Time :2025-03-23 12:41:38.745266
-users original query :Story points assigned to David and Alice seperately
-data to query  :All issues assigned to David and Alice
-specific need  :Story points assigned to David and Alice
-------------------------------------------------------------------
-Date and Time :2025-03-23 12:47:14.169939
-users original query :Number of story points assigned to Sprint 1, Sprint 2 seperately
-data to query  :All issues assigned to Sprint 1 and Sprint 2
-specific need  :Count of story points for each sprint
-------------------------------------------------------------------
-Date and Time :2025-03-23 12:47:55.320814
-users original query :Sum of story points assigned to Sprint 1, Sprint 2 separately
-data to query  :All issues assigned to Sprint 1 and Sprint 2
-specific need  :sum of story points for Sprint 1 and Sprint 2 separately
-------------------------------------------------------------------
-Date and Time :2025-03-23 12:48:28.767736
-users original query :Sum of story points assigned to Sprint 1, Sprint 2
-data to query  :All issues assigned to Sprint 1 and Sprint 2
-specific need  :Sum of story points assigned to Sprint 1 and Sprint 2
-------------------------------------------------------------------
-Date and Time :2025-03-23 12:49:06.983144
-users original query :Sum of story points assigned to Sprint 1 and sum of story points assigned to  Sprint 2
-data to query  :Story points assigned to Sprint 1, Story points assigned to Sprint 2
-specific need  :Sum of story points assigned to Sprint 1, Sum of story points assigned to Sprint 2
-------------------------------------------------------------------
-Date and Time :2025-03-23 12:50:26.430741
-users original query :Sum of story points assigned to Sprint 1 , Sprint 2 , Sprint 3 . Give it seperately like for Sprint1 its 21 etc
-data to query  :All issues assigned to Sprint 1, Sprint 2, and Sprint 3
-specific need  :sum of story points for each sprint
-------------------------------------------------------------------
-Date and Time :2025-03-23 12:51:02.269449
-users original query :Total story points assigned to Sprint 1 , Sprint 2 individually 
-data to query  :All issues assigned to Sprint 1 and Sprint 2
-specific need  :Sum of story points for each sprint
-------------------------------------------------------------------
-Date and Time :2025-03-23 17:56:51.725016
-users original query :Total number of story points assigned to David 
-data to query  :All issues assigned to David
-specific need  :sum of all story points of David
-------------------------------------------------------------------
-Date and Time :2025-03-23 18:23:51.289641
-users original query :Total number of story points assigned to david 
-data to query  :All issues assigned to David
-specific need  :sum of all story points assigned to David
-------------------------------------------------------------------
-Date and Time :2025-03-23 18:26:28.076716
-users original query :Total number of story points assigned to David 
-data to query  :All issues assigned to David
-specific need  :sum of all story points of David
-------------------------------------------------------------------
-Date and Time :2025-03-23 18:43:49.834085
-users original query :Total number of story points assigned to David 
-data to query  :All issues assigned to David
-specific need  :sum of all story points of David
-------------------------------------------------------------------
-Date and Time :2025-03-24 18:38:19.123884
-users original query :total number of story points assigned to David
-data to query  :All issues assigned to David
-specific need  :sum of all story points assigned to David
-------------------------------------------------------------------
-Date and Time :2025-03-24 18:38:47.173453
-users original query :total number of story points assigned to Sanjay
-data to query  :All issues assigned to Sanjay
-specific need  :sum of all story points of Sanjay
-------------------------------------------------------------------
-Date and Time :2025-03-24 18:43:34.832256
-users original query :total number of story points assigned to Sanjay
-data to query  :All issues assigned to Sanjay
-specific need  :sum of all story points of Sanjay
+Date and Time :2025-03-27 00:45:31.189599
+users original query :Count of FTE / FTC utilization in CDF board
+data to query  :All FTE and FTC entries in CDF board
+specific need  :Count of FTE/FTC utilization
 ------------------------------------------------------------------

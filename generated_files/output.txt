@@ -1,2 +1,3 @@
-User Query: sum of all story points of Sanjay
-Result: 0
+User Query: Count of FTE/FTC utilization
+Count of FTE utilization: 70
+Count of FTC utilization: 40
