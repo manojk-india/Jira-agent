@@ -1,3 +1,2 @@
-User Query: Count of FTE/FTC utilization
-Count of FTE utilization: 70
-Count of FTC utilization: 40
+User Query: sum of all story points assigned to Alok in Sprint 6
+Result: 51

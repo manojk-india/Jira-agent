@@ -68,3 +68,84 @@ users original query :Count of FTE / FTC utilization in CDF board
 data to query  :All FTE and FTC entries in CDF board
 specific need  :Count of FTE/FTC utilization
 ------------------------------------------------------------------
+Date and Time :2025-03-27 10:00:22.831796
+users original query :Capacity utilization of RTB, CTB in Sprint 8
+data to query  :Capacity allocated to RTB and CTB in Sprint 8
+specific need  :Capacity utilization of RTB and CTB in Sprint 8
+------------------------------------------------------------------
+Date and Time :2025-03-27 10:04:08.368701
+users original query :Total number for story points assigned to David 
+data to query  :All issues assigned to David
+specific need  :sum of all story points of David
+------------------------------------------------------------------
+Date and Time :2025-03-27 10:17:00.369702
+users original query :No of Story number assigned to David in Sprint 8
+
+data to query  :All issues assigned to David in Sprint 8
+specific need  :number of story numbers assigned to David in Sprint 8
+------------------------------------------------------------------
+Date and Time :2025-03-27 10:18:35.602401
+users original query :Story points assigned to David in Sprint 8
+data to query  :All issues assigned to David in Sprint 8
+specific need  :story points assigned to David in Sprint 8
+------------------------------------------------------------------
+Date and Time :2025-03-27 12:16:35.115889
+users original query :total number of story points assigned to David
+data to query  :All issues assigned to David
+specific need  :sum of all story points of David
+------------------------------------------------------------------
+Date and Time :2025-03-27 12:20:21.565849
+users original query :total number of story points assigned to Rishika
+data to query  :All issues assigned to Rishika
+specific need  :sum of all story points of Rishika
+------------------------------------------------------------------
+Date and Time :2025-03-27 12:22:49.436737
+users original query :Total number of story points assigned to Rishika
+data to query  :All issues assigned to Rishika
+specific need  :sum of all story points of Rishika
+------------------------------------------------------------------
+Date and Time :2025-03-27 12:24:47.802208
+users original query :Total number of story points assigned to Rishika in Sprint 9
+data to query  :All issues assigned to Rishika in Sprint 9
+specific need  :total number of story points assigned to Rishika in Sprint 9
+------------------------------------------------------------------
+Date and Time :2025-03-27 12:27:27.978288
+users original query :total number of story points assigned to Rishika in sprint 9
+data to query  :All issues assigned to Rishika in sprint 9
+specific need  :Total number of story points assigned to Rishika in sprint 9
+------------------------------------------------------------------
+Date and Time :2025-03-27 12:28:29.282625
+users original query :total number of story points assigned to Rishika in Sprint 9
+data to query  :All issues assigned to Rishika in Sprint 9
+specific need  :sum of all story points assigned to Rishika in Sprint 9
+------------------------------------------------------------------
+Date and Time :2025-03-27 12:38:54.133048
+users original query :total number of story points assigned to Rishika Sprint 9
+data to query  :All issues assigned to Rishika in Sprint 9
+specific need  :sum of all story points
+------------------------------------------------------------------
+Date and Time :2025-03-27 12:43:02.078893
+users original query :total number of story points assigned to Rishika in Sprint 9
+data to query  :All issues assigned to Rishika in Sprint 9
+specific need  :total number of story points assigned to Rishika in Sprint 9
+------------------------------------------------------------------
+Date and Time :2025-03-27 12:44:31.216854
+users original query :total number of story points assigned to Alok in Sprint 9
+data to query  :All issues assigned to Alok in Sprint 9
+specific need  :Total number of story points assigned to Alok in Sprint 9
+------------------------------------------------------------------
+Date and Time :2025-03-27 12:45:58.305956
+users original query :total number of story points assigned to Alok in Sprint 9
+data to query  :All issues assigned to Alok in Sprint 9
+specific need  :sum of all story points assigned to Alok in Sprint 9
+------------------------------------------------------------------
+Date and Time :2025-03-27 12:48:21.049091
+users original query :total number of story points assigned to Alok in Sprint 8
+data to query  :All issues assigned to Alok in Sprint 8
+specific need  :sum of all story points assigned to Alok in Sprint 8
+------------------------------------------------------------------
+Date and Time :2025-03-27 12:51:53.106765
+users original query :total number of story points assigned to Alok in Sprint 6
+data to query  :All issues assigned to Alok in Sprint 6
+specific need  :sum of all story points assigned to Alok in Sprint 6
+------------------------------------------------------------------

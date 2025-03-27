@@ -6,6 +6,7 @@ from datetime import datetime
 import os
 import pandas as pd  # Import pandas for data processing
 import speech_recognition as sr
+import matplotlib.pyplot as plt
 
 
 # Load environment variables
@@ -15,7 +16,7 @@ load_dotenv()
 llm = LLM(
     model="sambanova/DeepSeek-R1-Distill-Llama-70B",
     temperature=0.7,
-    max_tokens=1000000000
+    max_tokens=2048
 )
 
 def speech_to_text(audio_path):
@@ -218,6 +219,9 @@ def process_query(user_query, audio_text=None):
 
         extract_code_section("generated_files/panda.py", "generated_files/output2.py")
         os.system("python generated_files/output2.py")
+        os.system("python final.py")
+
+            
 
         with open("generated_files/output.txt", "r") as f:
             output_content = f.read()
@@ -231,7 +235,7 @@ def process_query(user_query, audio_text=None):
             csv_output = "output.csv not found."
             csv_download = None
 
-        return output_content,csv_output,csv_download
+        return output_content,csv_output,'jira_hygiene_dashboard2.png',csv_download
     
 
 
@@ -625,7 +629,32 @@ def validate_and_process(text, transcribed):
     return process_query(text, transcribed)  # Call your actual processing function
 
 
-with gr.Blocks(js=js,css=css) as iface:
+# with gr.Blocks(js=js,css=css) as iface:
+#     #gr.Markdown("# JANVI - JIRA AI ASSISTANT")
+#     gr.Markdown("Enter your query using text or voice. You can edit transcribed text before submission.")
+
+#     with gr.Row():
+#         text_input = gr.Textbox(lines=2, placeholder="Enter your query here...", label="Query Input")
+#         audio_input = gr.Audio(type="filepath", label="Speak your query")
+    
+#     transcribed_text = gr.Textbox(lines=2, label="Transcribed Text (Edit if needed)")
+
+#     audio_input.change(speech_to_text, inputs=audio_input, outputs=transcribed_text)
+    
+#     process_btn = gr.Button("Submit Query")
+
+#     output_text = gr.Textbox(lines=10, label="Output")
+#     output_df = gr.Dataframe(label="Formatted output.csv")
+#     output_image = gr.Image(label="JIRA hygiene Report") 
+#     output_file = gr.File(label="Download output.csv")
+
+#     process_btn.click(validate_and_process, inputs=[text_input,transcribed_text], outputs=[output_text, output_df,output_image,output_file])
+
+# if __name__ == "__main__":
+#     iface.launch()
+
+
+with gr.Blocks(js=js, css=css) as iface:
     #gr.Markdown("# JANVI - JIRA AI ASSISTANT")
     gr.Markdown("Enter your query using text or voice. You can edit transcribed text before submission.")
 
@@ -640,15 +669,16 @@ with gr.Blocks(js=js,css=css) as iface:
     process_btn = gr.Button("Submit Query")
 
     output_text = gr.Textbox(lines=10, label="Output")
-    output_df = gr.Dataframe(label="Formatted output.csv")
-    output_file = gr.File(label="Download output.csv")
+    output_df = gr.Dataframe(label="Issues retrieved")
+    # Create a row for the image and file download
+    with gr.Row():
+        output_image = gr.Image(label="JIRA hygiene Report") 
+        output_file = gr.File(label="Download output.csv")
 
-    process_btn.click(validate_and_process, inputs=[text_input,transcribed_text], outputs=[output_text, output_df, output_file])
+    process_btn.click(validate_and_process, inputs=[text_input, transcribed_text], outputs=[output_text, output_df, output_image, output_file])
 
 if __name__ == "__main__":
     iface.launch()
-
-
 
 
 
