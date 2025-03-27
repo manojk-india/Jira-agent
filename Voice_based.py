@@ -103,7 +103,10 @@ def process_query(user_query, audio_text=None):
     task1 = Task(
         description=f'''From the user query {dynamic_user} extract 2 things : 1. What data has to be queried(data_to_query)2. Is there anything specific the user is asking for(specific_need)
         For example if the user query is "Sum of all story points assigned to David" then data_to_query will be "All issues assigned to David" and specific_need will be "sum of all story points of David
-        If there is nothing specific assign variable specific_need as "None" ''',
+        If there is nothing specific assign variable specific_need as "None" 
+        eg if query is total number story points assigned to RTB , CTB seperately in Sprint 8 then
+        data_to_query: All issues in Sprint 8
+        specific_need: Stroy points assigned to RTB , CTB seperately''',
         agent=agent1,
         output_pydantic=extracted_info,
         expected_output="A response containing ",
@@ -680,7 +683,7 @@ with gr.Blocks(js=js, css=css) as iface:
 if __name__ == "__main__":
     iface.launch()
 
-
+# handling the None cases for specific user query........
 
 
 

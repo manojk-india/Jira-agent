@@ -1,2 +1,3 @@
-User Query: sum of all story points assigned to Alok in Sprint 6
-Result: 51
+User Query: Total story points assigned to Apoorva and Rishika separately in Sprint 8
+Apoorva: 22 story points
+Rishika: 12 story points

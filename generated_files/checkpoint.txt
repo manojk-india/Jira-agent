@@ -149,3 +149,23 @@ users original query :total number of story points assigned to Alok in Sprint 6
 data to query  :All issues assigned to Alok in Sprint 6
 specific need  :sum of all story points assigned to Alok in Sprint 6
 ------------------------------------------------------------------
+Date and Time :2025-03-27 15:32:59.181630
+users original query :give me total number of story points assigned to rtb, ctb separately in Sprint 8
+data to query  :All issues in Sprint 8 assigned to RTB and CTB
+specific need  :Sum of story points for RTB and CTB separately in Sprint 8
+------------------------------------------------------------------
+Date and Time :2025-03-27 15:37:25.989099
+users original query :total number of story points assigned to rtb ctb in Sprint 8 separately
+data to query  :All issues in Sprint 8
+specific need  :Story points assigned to RTB and Ctb separately
+------------------------------------------------------------------
+Date and Time :2025-03-27 15:38:24.193950
+users original query :total number of backlogs assigned to Sprint 8
+data to query  :All issues in Sprint 8
+specific need  :Total number of backlogs
+------------------------------------------------------------------
+Date and Time :2025-03-27 15:40:37.803078
+users original query :total number of story points assigned to Apoorva and Rishika in Sprint 8 seperately
+data to query  :All issues assigned to Apoorva and Rishika in Sprint 8
+specific need  :Total story points assigned to Apoorva and Rishika separately in Sprint 8
+------------------------------------------------------------------
