@@ -1,3 +1,2 @@
-User Query: Total story points assigned to Apoorva and Rishika separately in Sprint 8
-Apoorva: 22 story points
-Rishika: 12 story points
+User Query: Number of story points assigned to Rishika
+Result: 101

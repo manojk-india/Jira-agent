@@ -169,3 +169,178 @@ users original query :total number of story points assigned to Apoorva and Rishi
 data to query  :All issues assigned to Apoorva and Rishika in Sprint 8
 specific need  :Total story points assigned to Apoorva and Rishika separately in Sprint 8
 ------------------------------------------------------------------
+Date and Time :2025-03-27 15:51:12.170193
+users original query :Number of story points assigned to Rishika in Sprint 7
+data to query  :All issues assigned to Rishika in Sprint 7
+specific need  :sum of story points assigned to Rishika in Sprint 7
+------------------------------------------------------------------
+Date and Time :2025-03-27 16:11:09.080732
+users original query :Total number of story points assigned to Rishika and Apoorva seperately in Sprint 8
+data to query  :All issues in Sprint 8
+specific need  :Story points assigned to Rishika and Apoorva separately
+------------------------------------------------------------------
+Date and Time :2025-03-27 16:16:59.531932
+users original query :Total number of story points assigned to Rishika and Apoorva seperately in Sprint 8
+data to query  :All issues assigned to Rishika and Apoorva in Sprint 8
+specific need  :Total number of story points assigned to Rishika and Apoorva separately in Sprint 8
+------------------------------------------------------------------
+Date and Time :2025-03-27 16:19:24.095903
+users original query :Total number of story points assigned to Rishika and Apoorva seperately in Sprint 8
+data to query  :All issues assigned to Rishika and Apoorva in Sprint 8
+specific need  :Total number of story points assigned to Rishika and Apoorva seperately in Sprint 8
+------------------------------------------------------------------
+Date and Time :2025-03-27 16:21:08.344674
+users original query :total number of issues sent to rtb ctb separately
+data to query  :All issues assigned to RTB and CTB
+specific need  :Total number of issues sent to RTB and CTB separately
+------------------------------------------------------------------
+Date and Time :2025-03-27 16:22:20.159417
+users original query :total number of backlogs assigned to Rishika in Sprint 8
+data to query  :All issues assigned to Rishika in Sprint 8
+specific need  :Total number of backlogs
+------------------------------------------------------------------
+Date and Time :2025-03-27 16:26:45.892485
+users original query :Total number of story points assigned to Rishika and Apoorva seperately in Sprint 8
+data to query  :All issues in Sprint 8
+specific need  :Total number of story points assigned to Rishika and Apoorva separately
+------------------------------------------------------------------
+Date and Time :2025-03-27 16:42:43.944888
+users original query :Total number of story points assigned to Rishika and Apoorva seperately in Sprint 8
+data to query  :All issues in Sprint 8
+specific need  :Story points assigned to Rishika and Apoorva separately
+------------------------------------------------------------------
+Date and Time :2025-03-27 16:44:55.055462
+users original query :Total number of story points assigned to Rishika and Apoorva seperately in Sprint 8
+data to query  :All issues in Sprint 8
+specific need  :sum of story points assigned to Rishika and Apoorva separately
+------------------------------------------------------------------
+Date and Time :2025-03-27 16:46:22.865445
+users original query :Total number of story points assigned to Rishika and Apoorva seperately in Sprint 8
+data to query  :All issues in Sprint 8
+specific need  :Total number of story points assigned to Rishika and Apoorva separately
+------------------------------------------------------------------
+Date and Time :2025-03-27 16:46:58.044558
+users original query :total number of backlogs assigned to Rishika in Sprint 8
+data to query  :All issues assigned to Rishika in Sprint 8
+specific need  :Total number of backlogs assigned to Rishika
+------------------------------------------------------------------
+Date and Time :2025-03-27 16:47:36.560580
+users original query :total number of backlogs assigned to Rishika in sprint 8
+data to query  :All backlogs assigned to Rishika in Sprint 8
+specific need  :Total number of backlogs
+------------------------------------------------------------------
+Date and Time :2025-03-27 17:01:44.439384
+users original query :Total number of story points assigned to Rishika and Apoorva seperately in Sprint 8
+data to query  :All issues in Sprint 8
+specific need  :sum of story points assigned to Rishika and Apoorva separately
+------------------------------------------------------------------
+Date and Time :2025-03-27 17:06:32.879736
+users original query :Total number of story points assigned to Rishika and Apoorva seperately in Sprint 8
+data to query  :All issues assigned to Rishika and Apoorva in Sprint 8
+specific need  :Sum of story points assigned to Rishika and Apoorva separately
+------------------------------------------------------------------
+Date and Time :2025-03-27 17:11:09.403648
+users original query :total number of backlogs assigned to Rishika in sprint 8
+data to query  :All issues assigned to Rishika in Sprint 8
+specific need  :Total number of backlogs assigned to Rishika in Sprint 8
+------------------------------------------------------------------
+Date and Time :2025-03-27 17:13:04.912967
+users original query :total number of backlogs assigned to CDF board
+data to query  :All issues assigned to CDF board
+specific need  :total number of backlogs
+------------------------------------------------------------------
+Date and Time :2025-03-27 17:18:02.306827
+users original query :total number of backlogs in CDF board
+data to query  :All backlogs in CDF board
+specific need  :Number of backlogs in CDF board
+------------------------------------------------------------------
+Date and Time :2025-03-27 17:20:03.839064
+users original query :total number of backlogs assigned to CDF board
+data to query  :All backlogs in CDF board
+specific need  :Number of backlogs in CDF board
+------------------------------------------------------------------
+Date and Time :2025-03-27 17:30:12.034775
+users original query :Total number of story points assigned to Rishika and Apoorva separately in Sprint 8
+data to query  :All issues in Sprint 8
+specific need  :Story points assigned to Rishika and Apoorva separately
+------------------------------------------------------------------
+Date and Time :2025-03-27 17:34:28.758298
+users original query :Total number of story points assigned to Rishika and Apoorva separately in Sprint 8
+data to query  :All issues assigned to Rishika and Apoorva in Sprint 8
+specific need  :Story points assigned to Rishika and Apoorva separately in Sprint 8
+------------------------------------------------------------------
+Date and Time :2025-03-27 17:38:04.694887
+users original query :Total number of story points assigned to Rishika and Apoorva separately in Sprint 8
+data to query  :All issues in Sprint 8
+specific need  :Story points assigned to Rishika and Apoorva separately in Sprint 8
+------------------------------------------------------------------
+Date and Time :2025-03-27 17:40:38.847793
+users original query :Total number of story points assigned to Rishika and Apoorva separately in Sprint 8
+data to query  :All issues assigned to Rishika and Apoorva in Sprint 8
+specific need  :Story points assigned to Rishika and Apoorva separately in Sprint 8
+------------------------------------------------------------------
+Date and Time :2025-03-27 17:42:26.384637
+users original query :total number of issues assigned to rtb ctb separately in sprint 8
+data to query  :All issues in Sprint 8
+specific need  :Total number of issues assigned to RTB and CTB separately
+------------------------------------------------------------------
+Date and Time :2025-03-27 17:43:48.511707
+users original query :total number of backlogs assigned to Rishika in sprint 8
+data to query  :All backlogs assigned to Rishika in sprint 8
+specific need  :Number of backlogs assigned to Rishika in sprint 8
+------------------------------------------------------------------
+Date and Time :2025-03-27 17:44:45.034994
+users original query :total number of backlogs assigned to Rishika in Sprint 8
+data to query  :All backlogs assigned to Rishika in Sprint 8
+specific need  :Total number of backlogs assigned to Rishika in Sprint 8
+------------------------------------------------------------------
+Date and Time :2025-03-27 17:46:27.136088
+users original query :Total number of story points assigned to Rishika and Apoorva separately in Sprint 8
+data to query  :All issues assigned to Rishika and Apoorva in Sprint 8
+specific need  :Story points assigned to Rishika and Apoorva separately in Sprint 8
+------------------------------------------------------------------
+Date and Time :2025-03-27 17:49:01.864354
+users original query :Total number of story points assigned to Rishika and Apoorva separately in Sprint 8
+data to query  :All issues assigned to Rishika and Apoorva in Sprint 8
+specific need  :Story points assigned to Rishika and Apoorva separately in Sprint 8
+------------------------------------------------------------------
+Date and Time :2025-03-27 17:54:01.573241
+users original query :Total number of story points assigned to Rishika and Apoorva separately in Sprint 8
+data to query  :All issues assigned to Rishika and Apoorva in Sprint 8
+specific need  :Story points assigned to Rishika and Apoorva separately in Sprint 8
+------------------------------------------------------------------
+Date and Time :2025-03-27 17:56:21.276270
+users original query :Total number of story points assigned to Rishika and Apoorva separately in Sprint 8
+data to query  :All issues assigned to Rishika and Apoorva in Sprint 8
+specific need  :Story points assigned to Rishika and Apoorva separately in Sprint 8
+------------------------------------------------------------------
+Date and Time :2025-03-27 17:57:42.379289
+users original query :total number of issues assigned to rtb ctb separately in Sprint 8
+data to query  :All issues in Sprint 8
+specific need  :Number of issues assigned to RTB and CTB separately in Sprint 8
+------------------------------------------------------------------
+Date and Time :2025-03-27 17:58:47.841289
+users original query :total number of backlogs in Sprint 8
+data to query  :All backlogs in Sprint 8
+specific need  :Number of backlogs in Sprint 8
+------------------------------------------------------------------
+Date and Time :2025-03-27 18:07:59.868251
+users original query :Total number of story points assigned to Rishika and Apoorva separately in Sprint 8
+data to query  :All issues assigned to Rishika and Apoorva in Sprint 8
+specific need  :Story points assigned to Rishika and Apoorva separately in Sprint 8
+------------------------------------------------------------------
+Date and Time :2025-03-27 18:09:24.986104
+users original query :total number of issues assigned to rtb ctb separately and Sprint 9
+data to query  :All issues in Sprint 9
+specific need  :Total number of issues assigned to RTB and CTB separately in Sprint 9
+------------------------------------------------------------------
+Date and Time :2025-03-27 18:10:36.475393
+users original query :total number of backlogs assigned to Rishika in Sprint 8
+data to query  :All backlogs assigned to Rishika in Sprint 8
+specific need  :Number of backlogs assigned to Rishika in Sprint 8
+------------------------------------------------------------------
+Date and Time :2025-03-28 11:50:41.547494
+users original query :No of story points assigned to Rishika
+data to query  :All issues assigned to Rishika
+specific need  :Number of story points assigned to Rishika
+------------------------------------------------------------------

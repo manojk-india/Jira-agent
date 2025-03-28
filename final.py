@@ -59,7 +59,7 @@ def visualize_missing_data(csv_file_path, output_image_path='jira_hygiene_dashbo
     ax.add_patch(shadow)
     
     # Add FULL-WIDTH title bar with blue background
-    title_box = Rectangle((0.0, 0.82), 1.0, 0.1,
+    title_box = Rectangle((0.05, 0.82), 0.9, 0.1,
                          facecolor=colors['accent'],
                          edgecolor='none',
                          zorder=3)
@@ -75,10 +75,10 @@ def visualize_missing_data(csv_file_path, output_image_path='jira_hygiene_dashbo
     # Subtitle moved down slightly
     ax.text(0.5, 0.78, f"Analysis of missing values across {total_rows:,} records", 
             ha='center', va='center', 
-            fontsize=12, color=colors['text'], alpha=0.8)
+            fontsize=13, color=colors['text'], alpha=0.8)
     
     # Metrics container
-    metrics_box = FancyBboxPatch((0.1, 0.15), 0.8, 0.6,
+    metrics_box = FancyBboxPatch((0.1, 0.28), 0.8, 0.42,
                                boxstyle="round,pad=0.02",
                                facecolor='#ffffff',
                                edgecolor=colors['border'],
@@ -103,7 +103,7 @@ def visualize_missing_data(csv_file_path, output_image_path='jira_hygiene_dashbo
         status_text = "Missing" if count > 0 else "Complete"
         
         # Value box with rounded corners
-        value_box = FancyBboxPatch((0.55, y_pos-cell_height/2), 0.4, cell_height,
+        value_box = FancyBboxPatch((0.55, y_pos-cell_height/2), 0.25, 0.08,
                                   boxstyle="round,pad=0.02",
                                   facecolor=mcolors.to_rgba(status_color, 0.1),
                                   edgecolor=status_color,
@@ -120,7 +120,7 @@ def visualize_missing_data(csv_file_path, output_image_path='jira_hygiene_dashbo
     total_missing = sum(missing_counts.values())
     completeness = (1 - total_missing/(total_rows*3)) * 100  # 3 columns
     
-    summary_box = FancyBboxPatch((0.2, 0.12), 0.6, 0.08,  # Adjusted y-position from 0.1 to 0.12
+    summary_box = FancyBboxPatch((0.1, 0.12), 0.8, 0.08,  # Adjusted y-position from 0.1 to 0.12
                                boxstyle="round,pad=0.02",
                                facecolor=mcolors.to_rgba(colors['highlight'], 0.2),
                                edgecolor=colors['highlight'],

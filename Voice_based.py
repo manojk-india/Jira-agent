@@ -106,7 +106,14 @@ def process_query(user_query, audio_text=None):
         If there is nothing specific assign variable specific_need as "None" 
         eg if query is total number story points assigned to RTB , CTB seperately in Sprint 8 then
         data_to_query: All issues in Sprint 8
-        specific_need: Stroy points assigned to RTB , CTB seperately''',
+        specific_need: Stroy points assigned to RTB , CTB seperately
+        eg2 if query is total number of story points assigned to Rishika and Alok in sprint 8
+        data_to_query: All issues assigned to Rishika and Alok in sprint 8
+        specific_need: Story points assigned to Rishika and Alok seperately in sprint 8
+        eg3 if query is total number of backlogs in CDF board in Sprint 8
+        data_to_query: All backlogs in CDF board in Sprint 8
+        specific_need: Number of backlogs in CDF board in Sprint 8
+        ''',
         agent=agent1,
         output_pydantic=extracted_info,
         expected_output="A response containing ",
