@@ -1,2 +1,2 @@
-User Query: Number of story points assigned to Rishika
-Result: 101
+User Query: Sum of all story points assigned to David
+Result: 57

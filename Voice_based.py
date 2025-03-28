@@ -106,14 +106,7 @@ def process_query(user_query, audio_text=None):
         If there is nothing specific assign variable specific_need as "None" 
         eg if query is total number story points assigned to RTB , CTB seperately in Sprint 8 then
         data_to_query: All issues in Sprint 8
-        specific_need: Stroy points assigned to RTB , CTB seperately
-        eg2 if query is total number of story points assigned to Rishika and Alok in sprint 8
-        data_to_query: All issues assigned to Rishika and Alok in sprint 8
-        specific_need: Story points assigned to Rishika and Alok seperately in sprint 8
-        eg3 if query is total number of backlogs in CDF board in Sprint 8
-        data_to_query: All backlogs in CDF board in Sprint 8
-        specific_need: Number of backlogs in CDF board in Sprint 8
-        ''',
+        specific_need: Stroy points assigned to RTB , CTB seperately''',
         agent=agent1,
         output_pydantic=extracted_info,
         expected_output="A response containing ",
@@ -637,32 +630,6 @@ def validate_and_process(text, transcribed):
         gr.Warning("⚠️ Please enter either a text query or provide an audio input.⚠️")
         return None, None, None  # Prevents processing if no input is given
     return process_query(text, transcribed)  # Call your actual processing function
-
-
-# with gr.Blocks(js=js,css=css) as iface:
-#     #gr.Markdown("# JANVI - JIRA AI ASSISTANT")
-#     gr.Markdown("Enter your query using text or voice. You can edit transcribed text before submission.")
-
-#     with gr.Row():
-#         text_input = gr.Textbox(lines=2, placeholder="Enter your query here...", label="Query Input")
-#         audio_input = gr.Audio(type="filepath", label="Speak your query")
-    
-#     transcribed_text = gr.Textbox(lines=2, label="Transcribed Text (Edit if needed)")
-
-#     audio_input.change(speech_to_text, inputs=audio_input, outputs=transcribed_text)
-    
-#     process_btn = gr.Button("Submit Query")
-
-#     output_text = gr.Textbox(lines=10, label="Output")
-#     output_df = gr.Dataframe(label="Formatted output.csv")
-#     output_image = gr.Image(label="JIRA hygiene Report") 
-#     output_file = gr.File(label="Download output.csv")
-
-#     process_btn.click(validate_and_process, inputs=[text_input,transcribed_text], outputs=[output_text, output_df,output_image,output_file])
-
-# if __name__ == "__main__":
-#     iface.launch()
-
 
 with gr.Blocks(js=js, css=css) as iface:
     #gr.Markdown("# JANVI - JIRA AI ASSISTANT")
