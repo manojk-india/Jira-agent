@@ -163,3 +163,8 @@ users original query :total number of story points assigned to David in sprint 8
 data to query  :All issues assigned to David in Sprint 8
 specific need  :Sum of all story points assigned to David in Sprint 8
 ------------------------------------------------------------------
+Date and Time :2025-03-30 21:32:18.946129
+users original query :total number of story points assigned to David
+data to query  :All issues assigned to David
+specific need  :Sum of all story points assigned to David
+------------------------------------------------------------------

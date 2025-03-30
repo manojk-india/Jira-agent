@@ -460,8 +460,7 @@ async def process_audio():
             ).send()
 
             res = await cl.AskActionMessage(
-                content='''Is our transcription accurate? ✅ If not, feel free to cancel it. ❌ Did you know that reducing unnecessary API calls helps save energy ⚡
-                             and lower carbon emissions 🌍? Let's contribute to a greener environment together! 🍃''',
+                content='''Is our transcription accurate? ✅ If not, feel free to cancel it. ❌ Did you know that reducing unnecessary API calls helps save energy ⚡and lower carbon emissions 🌍? Let's contribute to a greener environment together! 🍃''',
                 actions=[
                     cl.Action(name="continue", payload={"value": "continue"}, label="✅ Continue"),
                     cl.Action(name="cancel", payload={"value": "cancel"}, label="❌ Cancel"),
@@ -471,7 +470,7 @@ async def process_audio():
             if res and res.get("payload").get("value") == "continue":
                 await process_message(message.content)
             else:
-                await cl.Message(content="❌ Cancelled").send()
+                await cl.Message(content="❌ Cancelled. Thank you. Lets create a suistainable environment 🌍 for our future generations").send()
             
     except Exception as e:
         # Handle any exceptions that might occur during processing
