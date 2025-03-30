@@ -1,2 +1,2 @@
-User Query: Sum of all story points assigned to David
-Result: 57
+User Query: Sum of all story points assigned to David in Sprint 8
+Result: 12

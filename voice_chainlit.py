@@ -13,6 +13,8 @@ import speech_recognition as sr
 from tempfile import NamedTemporaryFile
 import os
 import numpy as np
+from transformers import pipeline
+
 
 
 
@@ -228,6 +230,15 @@ async def process_query(user_query: str):
 
         return None
     
+classifier = pipeline("zero-shot-classification", 
+                     model="facebook/bart-large-mnli")
+
+def is_jira_related(text):
+    candidate_labels = ["Jira query", "not Jira related"]
+    result = classifier(text, candidate_labels)
+    return result['labels'][0] == "Jira query"  # Returns True if Jira related
+
+
 
 # This is where the frontend chainlit part starts............
 os.environ["CHAINLIT_AUTH_SECRET"]="my_secret_key"
@@ -447,26 +458,41 @@ async def process_audio():
                 content=transcription,
                 elements=[input_audio_el],
             ).send()
-            
-            # Process the transcribed query
-            await process_message(message)
+
+            res = await cl.AskActionMessage(
+                content="Is our transcription correct. If not please cancel it.  Lets save some LLM API calls ?",
+                actions=[
+                    cl.Action(name="continue", payload={"value": "continue"}, label="✅ Continue"),
+                    cl.Action(name="cancel", payload={"value": "cancel"}, label="❌ Cancel"),
+                ],
+            ).send()
+
+            if res and res.get("payload").get("value") == "continue":
+                await process_message(message.content)
+            else:
+                await cl.Message(content="❌ Cancelled").send()
             
     except Exception as e:
         # Handle any exceptions that might occur during processing
         await cl.Message(content=f"Error processing audio: {str(e)}").send()
 
-
 @cl.on_message
 async def process_message(message: str):
     """Main message processing handler"""
     # Validate input length
-    if len(message.content) > 500:
+    if len(message) > 500:
         await cl.Message(
             content=f"⚠️ Input too long. Maximum 500 characters allowed.",
             author="System"
         ).send()
-    tool_res = await process1(message.content)
-    print(tool_res)
+
+    if is_jira_related(message):
+        tool_res = await process1(message)
+    else:
+        await cl.Message(
+            content="❌ Not a valid JIRA query.",
+            author="System"
+        ).send()
     
 def configure_chainlit_app():
     """Configure Chainlit application settings"""

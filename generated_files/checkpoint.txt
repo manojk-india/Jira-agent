@@ -123,3 +123,43 @@ users original query :Total story points assigned to David
 data to query  :All issues assigned to David
 specific need  :Sum of all story points assigned to David
 ------------------------------------------------------------------
+Date and Time :2025-03-30 15:50:56.049554
+users original query :Google Speech Recognition could not understand audio
+data to query  :All issues in Sprint 8
+specific need  :Story points assigned to RTB and CTB separately
+------------------------------------------------------------------
+Date and Time :2025-03-30 15:51:37.597363
+users original query :total number of story points assigned to David in sprint 8
+data to query  :All issues assigned to David in Sprint 8
+specific need  :Sum of all story points assigned to David in Sprint 8
+------------------------------------------------------------------
+Date and Time :2025-03-30 15:52:19.457277
+users original query :total number of backlogs assigned to CDF board in sprint 8 and sprint 9 separately give it to be separately
+data to query  :All backlogs in CDF board in Sprint 8 and Sprint 9
+specific need  :Number of backlogs in CDF board in Sprint 8 and Sprint 9 separately
+------------------------------------------------------------------
+Date and Time :2025-03-30 16:12:24.460216
+users original query :total number of story points assigned to David
+data to query  :All issues assigned to David
+specific need  :Sum of all story points assigned to David
+------------------------------------------------------------------
+Date and Time :2025-03-30 16:30:08.162986
+users original query :total number of story points assigned to David
+data to query  :All issues assigned to David
+specific need  :Sum of all story points assigned to David
+------------------------------------------------------------------
+Date and Time :2025-03-30 16:44:28.417109
+users original query :total number of story points assigned to David
+data to query  :All issues assigned to David
+specific need  :Sum of all story points assigned to David
+------------------------------------------------------------------
+Date and Time :2025-03-30 16:52:21.713956
+users original query :total number of story points assigned to David
+data to query  :All issues assigned to David
+specific need  :Sum of all story points assigned to David
+------------------------------------------------------------------
+Date and Time :2025-03-30 17:07:04.383634
+users original query :total number of story points assigned to David in sprint 8
+data to query  :All issues assigned to David in Sprint 8
+specific need  :Sum of all story points assigned to David in Sprint 8
+------------------------------------------------------------------
