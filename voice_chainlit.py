@@ -460,7 +460,7 @@ async def process_audio():
             ).send()
 
             res = await cl.AskActionMessage(
-                content="Is our transcription correct. If not please cancel it.  Lets save some LLM API calls ?",
+                content="Is our transcription correct??. If not please cancel it.Lets contribute to a better environment by saving some LLM API calls?",
                 actions=[
                     cl.Action(name="continue", payload={"value": "continue"}, label="✅ Continue"),
                     cl.Action(name="cancel", payload={"value": "cancel"}, label="❌ Cancel"),
