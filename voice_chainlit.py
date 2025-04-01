@@ -230,13 +230,13 @@ async def process_query(user_query: str):
 
         return None
     
-classifier = pipeline("zero-shot-classification", 
-                     model="facebook/bart-large-mnli")
+# classifier = pipeline("zero-shot-classification", 
+#                      model="facebook/bart-large-mnli")
 
-def is_jira_related(text):
-    candidate_labels = ["Jira query", "not Jira related"]
-    result = classifier(text, candidate_labels)
-    return result['labels'][0] == "Jira query"  # Returns True if Jira related
+# def is_jira_related(text):
+#     candidate_labels = ["Jira query", "not Jira related"]
+#     result = classifier(text, candidate_labels)
+#     return result['labels'][0] == "Jira query"  # Returns True if Jira related
 
 
 
@@ -468,7 +468,7 @@ async def process_audio():
             ).send()
 
             if res and res.get("payload").get("value") == "continue":
-                await process_message(message.content)
+                await process_message(message)
             else:
                 await cl.Message(content="❌ Cancelled. Thank you. Lets create a suistainable environment 🌍 for our future generations").send()
             
@@ -477,22 +477,24 @@ async def process_audio():
         await cl.Message(content=f"Error processing audio: {str(e)}").send()
 
 @cl.on_message
-async def process_message(message: str):
+async def process_message(message):
     """Main message processing handler"""
     # Validate input length
-    if len(message) > 500:
+    if len(message.content) > 500:
         await cl.Message(
             content=f"⚠️ Input too long. Maximum 500 characters allowed.",
             author="System"
         ).send()
 
-    if is_jira_related(message):
-        tool_res = await process1(message)
-    else:
-        await cl.Message(
-            content="❌ Not a valid JIRA query.",
-            author="System"
-        ).send()
+    # if is_jira_related(message):
+    #     tool_res = await process1(message)
+    # else:
+    #     await cl.Message(
+    #         content="❌ Not a valid JIRA query.",
+    #         author="System"
+    #     ).send()
+
+    tool_res = await process1(message.content)
     
 def configure_chainlit_app():
     """Configure Chainlit application settings"""
