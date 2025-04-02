@@ -111,6 +111,10 @@ async def process_query(user_query: str):
         eg: if query is total number of story points assigned to David 
         data_to_query: All issues assigned to David
         specific_need: Sum of all story points assigned to David
+        eg: if query is about backlog health for sprint 8 or how is backlog looking for sprint 8 for CDF board
+        data_to_query: All issues in Sprint 8 for CDF board  
+        specific_need: Count of all issues in Sprint 8 for CDF board and RTB and CTB issue counts seperately for CDF board in Sprint 8
+         
         ''',
         agent=agent1,
         output_pydantic=extracted_info,
