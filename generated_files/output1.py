@@ -1,8 +1,14 @@
-import pandas as pd  
-df = pd.read_csv("generated_files/new_custom.csv")  
+import pandas as pd
+df = pd.read_csv("generated_files/new_custom.csv")
 
-# Filter the DataFrame for issues assigned to David in Sprint 8  
-df_filtered = df[(df['assignee'] == 'David') & (df['sprint'] == 'Sprint 8')]  
+# Filter for issues in CDF board and Future sprint state
+cdf_future_sprints = df[(df['board'] == 'CDF') & (df['sprint_state'] == 'Future')]
 
-# Save the filtered DataFrame to output.csv  
-df_filtered.to_csv('generated_files/output.csv', index=False)  
+# Sort by sprint start date to get the next two sprints
+cdf_future_sprints_sorted = cdf_future_sprints.sort_values(by='sprint_start_date')
+
+# Select the top two sprints (next two sprints)
+next_two_sprints = cdf_future_sprints_sorted.head(2)
+
+# Save the result to output.csv
+next_two_sprints.to_csv('generated_files/output.csv', index=False)

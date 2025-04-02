@@ -1,2 +1,8 @@
-User Query: Sum of all story points assigned to David in Sprint 8
-Result: 12
+Count of all issues in CDF board for next 2 sprints seperately, classify them as healthy, underutilized and overutilized based on story points:
+
+Sprint: Sprint 8
+Total Story Points: 6
+Underutilized: 1
+Healthy: 1
+Overutilized: 0
+

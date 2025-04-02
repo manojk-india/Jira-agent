@@ -105,17 +105,17 @@ async def process_query(user_query: str):
         eg2 if query is total number of story points assigned to Rishika and Alok in sprint 8
         data_to_query: All issues assigned to Rishika and Alok in sprint 8
         specific_need: Story points assigned to Rishika and Alok seperately in sprint 8
-        eg3 if query is total number of backlogs in CDF board in Sprint 8
-        data_to_query: All backlogs in CDF board in Sprint 8
-        specific_need: Number of backlogs in CDF board in Sprint 8
         eg: if query is total number of story points assigned to David 
         data_to_query: All issues assigned to David
         specific_need: Sum of all story points assigned to David
-        eg: if query is about backlog health for sprint 8 or how is backlog looking for sprint 8 for CDF board
-        data_to_query: All issues in Sprint 8 for CDF board  
-        specific_need: Count of all issues in Sprint 8 for CDF board and RTB and CTB issue counts seperately for CDF board in Sprint 8
-         
-        ''',
+        eg: Is backlog planned perfectly for next 2 sprints for CDF board
+        data_to_query: All issues in CDF board for next 2 sprints
+        specific_need: Count of all issues in CDF board for upcoming 2 sprints seperately and classify them as healthy, underutilized and overutilized and also output their story points
+        eg: Backlog health for CDF board in Sprint 8
+        data_to_query: All issues in CDF board in Sprint 8
+        specific_need: count the total story points assigned to CDF board in Sprint 8 and save it and if its between 40-45 then its healthy , if it is less than 40 its underutilization and if it is more than 45 then its overutilization
+        Note : The backlog heatlth for a board per sprint is good if it has 40-45 story points. Address any backlog health related queries according to 
+        the given parameter.''',
         agent=agent1,
         output_pydantic=extracted_info,
         expected_output="A response containing ",
@@ -209,7 +209,7 @@ async def process_query(user_query: str):
             df = pd.read_csv("generated_files/output.csv")
 
             // your pandas generated code 
-            // code for saving it into generated_files/output.txt with User Query followed by the output
+            // code for saving it into generated_files/output.txt with User Query {dynamic_user} Followed by the output
             #code end 
             """
 
@@ -515,3 +515,24 @@ if __name__ == "__main__":
     if not os.path.exists("generated_files"):
         os.makedirs("generated_files")
     configure_chainlit_app()
+
+
+
+
+
+
+
+
+
+
+
+
+
+# eg: if query is about backlog health for sprint 8 or how is backlog looking for sprint 8 for CDF board
+# data_to_query: All issues in Sprint 8 for CDF board  
+# specific_need: Count of all issues in Sprint 8 for CDF board and RTB and CTB issue counts seperately for CDF board in Sprint 8.
+
+
+# eg3 if query is total number of backlogs in CDF board in Sprint 8
+# data_to_query: All backlogs in CDF board in Sprint 8
+# specific_need: Number of backlogs in CDF board in Sprint 8

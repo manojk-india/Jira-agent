@@ -249,3 +249,33 @@ users original query :Total number of story points assigned to David in Sprint 8
 data to query  :All issues assigned to David in Sprint 8
 specific need  :Sum of all story points assigned to David in Sprint 8
 ------------------------------------------------------------------
+Date and Time :2025-04-02 20:43:50.598893
+users original query :How is the backlog health of CDF board for sprint 8
+data to query  :All issues in Sprint 8 for CDF board
+specific need  :Count of all issues in Sprint 8 for CDF board and RTB and CTB issue counts seperately for CDF board in Sprint 8.
+------------------------------------------------------------------
+Date and Time :2025-04-02 20:47:15.368474
+users original query :What is backlog health of CDF board for sprint 8
+data to query  :All issues in CDF board for Sprint 8
+specific need  :Total number of story points in CDF board for Sprint 8
+------------------------------------------------------------------
+Date and Time :2025-04-02 20:51:40.845288
+users original query :How is backlog health looking for CDF board in sprint 8
+data to query  :All backlogs in CDF board in Sprint 8
+specific need  :Number of backlogs in CDF board in Sprint 8
+------------------------------------------------------------------
+Date and Time :2025-04-02 20:55:49.097411
+users original query :Backlog health for CDF board in Sprint 8
+data to query  :All issues in CDF board in Sprint 8
+specific need  :count the total story points assigned to CDF board in Sprint 8 and save it and if its between 40-45 then its healthy else Unhealthy
+------------------------------------------------------------------
+Date and Time :2025-04-02 20:59:53.255850
+users original query :Backlog health for CDF board in Sprint 8
+data to query  :All issues in CDF board in Sprint 8
+specific need  :count the total story points assigned to CDF board in Sprint 8 and save it and if its between 40-45 then its healthy , if it is less than 40 its underutilization and if it is more than 45 then its overutilization
+------------------------------------------------------------------
+Date and Time :2025-04-02 21:08:04.501173
+users original query :Is backlog planned perfectly for next 2 sprints for CDF board
+data to query  :All issues in CDF board for next 2 sprints
+specific need  :Count of all issues in CDF board for next 2 sprints seperately, classify them as healthy, underutilized and overutilized based on story points and output their story points
+------------------------------------------------------------------
