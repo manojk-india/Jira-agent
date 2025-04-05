@@ -279,3 +279,33 @@ users original query :Is backlog planned perfectly for next 2 sprints for CDF bo
 data to query  :All issues in CDF board for next 2 sprints
 specific need  :Count of all issues in CDF board for next 2 sprints seperately, classify them as healthy, underutilized and overutilized based on story points and output their story points
 ------------------------------------------------------------------
+Date and Time :2025-04-05 18:49:37.228712
+users original query :Total number of story points assigned to David 
+data to query  :All issues assigned to David
+specific need  :Sum of all story points assigned to David
+------------------------------------------------------------------
+Date and Time :2025-04-05 18:54:45.333366
+users original query :Total number of story points assigned for David
+data to query  :All issues assigned to David
+specific need  :Sum of all story points assigned to David
+------------------------------------------------------------------
+Date and Time :2025-04-05 19:01:48.801195
+users original query :Total number of story points assigned to David 
+data to query  :All issues assigned to David
+specific need  :Sum of all story points assigned to David
+------------------------------------------------------------------
+Date and Time :2025-04-05 19:16:41.276822
+users original query :Total number of story points assigned to David  
+data to query  :All issues assigned to David
+specific need  :Sum of all story points assigned to David
+------------------------------------------------------------------
+Date and Time :2025-04-05 19:20:07.252234
+users original query :Total number of story points assigned to David 
+data to query  :All issues assigned to David
+specific need  :Sum of all story points assigned to David
+------------------------------------------------------------------
+Date and Time :2025-04-05 19:23:54.100147
+users original query :Total number of story points assigned to David
+data to query  :All issues assigned to David
+specific need  :Sum of all story points assigned to David
+------------------------------------------------------------------

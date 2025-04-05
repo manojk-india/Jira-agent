@@ -299,6 +299,24 @@ async def set_starters():
             ),
         ]
 
+@cl.cache
+def load_data():
+    return pd.read_csv("generated_files/output.csv")  # Replace with your file path
+
+def filter_missing(data, column):
+    """Filter rows with missing values in specified column"""
+    return data[data[column].isnull()]
+
+def format_csv_display(filtered_df):
+    """Create clean CSV-like display with headers"""
+    return (
+        filtered_df.to_string(
+            index=False, 
+            justify="left",
+            na_rep="MISSING"
+        )
+    )
+
 @cl.on_chat_start
 async def start():
     """Initialize the chat interface"""
@@ -319,7 +337,7 @@ async def start():
         content=welcome_message,
         author="Assistant"
     ).send() 
-
+     
 
 @cl.step(type="tool")
 async def process1(message):
@@ -474,11 +492,76 @@ async def process_audio():
             if res and res.get("payload").get("value") == "continue":
                 await process_message(message)
             else:
-                await cl.Message(content="❌ Cancelled. Thank you. Lets create a suistainable environment 🌍 for our future generations").send()
+                await cl.Message(content="❌ Cancelled. Thank you. Lets create a sustainable environment 🌍 for our future generations").send()
             
     except Exception as e:
         # Handle any exceptions that might occur during processing
         await cl.Message(content=f"Error processing audio: {str(e)}").send()
+
+@cl.action_callback("missing_epic")
+async def show_missing_entries1(action: cl.Action):
+    data=load_data()
+
+    df= filter_missing(data,"epic_id")
+    if(df.empty):
+        await cl.Message(content="No missing epic entries found").send()
+    else:
+        await cl.Message(
+            content="Entries missing the epic ID's",
+            elements=[
+                cl.Dataframe(
+                    data=df, 
+                    display="inline",
+                    name="Missing epic ids",
+                )
+            ]
+            ).send()
+       
+@cl.action_callback("missing_desc")
+async def show_missing_entries2(action: cl.Action):
+    data=load_data()
+    df= filter_missing(data,"description")
+    if(df.empty):
+        await cl.Message(content="No missing desciption entries found").send()
+    else:
+        await cl.Message(
+            content="Entries missing the description:",
+            elements=[
+                cl.Dataframe(
+                    data=df, 
+                    display="inline",
+                    name="Missing Descriptions",
+                )
+            ]
+            ).send()
+
+
+@cl.action_callback("missing_criteria")
+async def show_missing_entries3(action: cl.Action):
+    
+    data=load_data()
+
+    df= filter_missing(data, "acceptance_criteria")
+    if(df.empty):
+        await cl.Message(content="No missing acceptance criteria entries found").send()
+    else:
+        await cl.Message(
+            content="Entries missing the acceptance criteria:",
+            elements=[
+                cl.Dataframe(
+                    data=df, 
+                    display="inline",
+                    name="Missing criteria",
+                )
+            ]
+        ).send()
+
+
+
+
+
+
+
 
 @cl.on_message
 async def process_message(message):
@@ -499,6 +582,20 @@ async def process_message(message):
     #     ).send()
 
     tool_res = await process1(message.content)
+
+    await cl.Message(
+        content="Click to view specific missing entries:",
+        actions=[
+            cl.Action(name="missing_epic", icon="mouse-pointer-click",payload={"value": "EPIC ?"},label="missing epic ID's"),
+            cl.Action(name="missing_desc", icon="mouse-pointer-click",payload={"value": " Description ?"},label="missing description"),
+            cl.Action(name="missing_criteria",icon="mouse-pointer-click",payload={"value": "Criteria ?"},label="missing acceptance criteria"),
+        ]
+    ).send()
+
+   
+
+
+
     
 def configure_chainlit_app():
     """Configure Chainlit application settings"""
