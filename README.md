@@ -31,9 +31,11 @@ JANVI is designed to assist developers and managers in understanding and interac
 ---
 
 ## 🔄 Query Processing Pipeline
-### Archetecture Diagram
+### a. Archetecture Diagram
+![Final_Architecture](https://github.com/user-attachments/assets/db018182-9efe-44da-99a9-d5bec3633d3d)
 
-### d. Outputs
+
+### b. Outputs
 
 - **Text-based analysis results**
 - **DataFrame containing relavant issues**
